@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -118,21 +118,80 @@
       <div class="main-content" id="character-screen" style="display: none">
         <div class="character-screen">
           <div class="character-info">
-            <img
-              src="assets/img/characters/krosh.png"
-              alt="avatar"
-              class="character-avatar-large"
-            />
-            <h2 id="character-name">Player</h2>
-            <div class="character-stats">
-              <p>Health: <span id="character-hp">100</span></p>
-              <p>Damage: <span id="character-damage">10</span></p>
-              <p>Crit chance: <span id="character-crit">10.0</span>%</p>
-              <p>crit multiplier: <span id="character-crit-mult">1.5</span>x</p>
+            <div class="character-selection">
+              <h3>Click on character to select:</h3>
+              <div class="character-grid">
+                <div class="character-option" data-character-id="krosh">
+                  <img
+                    src="assets/img/characters/krosh.png"
+                    alt="Krosh"
+                    class="character-avatar-small"
+                  />
+                  <span>Krosh</span>
+                </div>
+                <div class="character-option" data-character-id="nusha">
+                  <img
+                    src="assets/img/characters/nusha.png"
+                    alt="Nusha"
+                    class="character-avatar-small"
+                  />
+                  <span>Nyusha</span>
+                </div>
+                <div class="character-option" data-character-id="barash">
+                  <img
+                    src="assets/img/characters/barash.png"
+                    alt="Barash"
+                    class="character-avatar-small"
+                  />
+                  <span>Barash</span>
+                </div>
+                <div class="character-option" data-character-id="pin">
+                  <img
+                    src="assets/img/characters/pin.png"
+                    alt="Pin"
+                    class="character-avatar-small"
+                  />
+                  <span>Pin</span>
+                </div>
+                <div class="character-option" data-character-id="losyash">
+                  <img
+                    src="assets/img/characters/losyash.png"
+                    alt="Losyash"
+                    class="character-avatar-small"
+                  />
+                  <span>Losyash</span>
+                </div>
+                <div class="character-option" data-character-id="bibi">
+                  <img
+                    src="assets/img/characters/bibi.png"
+                    alt="Bibi"
+                    class="character-avatar-small"
+                  />
+                  <span>Bibi</span>
+                </div>
+              </div>
             </div>
-            <div class="battle-record">
-              <p>Wins: <span id="character-wins">0</span></p>
-              <p>Losses: <span id="character-losses">0</span></p>
+            <div class="selected-character">
+              <h2>Selected Character:</h2>
+              <img
+                src="assets/img/characters/krosh.png"
+                alt="avatar"
+                class="character-avatar-large"
+                id="selected-character-avatar"
+              />
+              <h2 id="character-name">Player</h2>
+              <div class="character-stats">
+                <p>Health: <span id="character-hp">100</span></p>
+                <p>Damage: <span id="character-damage">10</span></p>
+                <p>Crit chance: <span id="character-crit">10.0</span>%</p>
+                <p>
+                  Crit multiplier: <span id="character-crit-mult">1.5</span>x
+                </p>
+              </div>
+              <div class="battle-record">
+                <p>Wins: <span id="character-wins">0</span></p>
+                <p>Losses: <span id="character-losses">0</span></p>
+              </div>
             </div>
           </div>
         </div>

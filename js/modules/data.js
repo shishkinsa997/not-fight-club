@@ -150,8 +150,8 @@ export function initData() {
     },
   ];
 
-  // Начальный игрок
-  const player =[
+  // Доступные персонажи для выбора
+  const players = [
     {
       id: "krosh",
       name: "Krosh",
@@ -177,14 +177,14 @@ export function initData() {
       losses: 0,
     },
     {
-      id: "nyusha",
+      id: "nusha",
       name: "Nusha",
       avatar: "assets/img/characters/nusha.png",
-      hpMax: 100,
-      hp: 100,
-      damage: 10,
-      critChance: 0.1,
-      critMultiplier: 1.5,
+      hpMax: 90,
+      hp: 90,
+      damage: 12,
+      critChance: 0.15,
+      critMultiplier: 1.8,
       wins: 0,
       losses: 0,
     },
@@ -216,20 +216,47 @@ export function initData() {
       id: "pin",
       name: "Pin",
       avatar: "assets/img/characters/pin.png",
-      hpMax: 100,
-      hp: 100,
-      damage: 10,
-      critChance: 0.1,
-      critMultiplier: 1.5,
+      hpMax: 80,
+      hp: 80,
+      damage: 15,
+      critChance: 0.2,
+      critMultiplier: 2.0,
       wins: 0,
       losses: 0,
     },
-  ]
+    {
+      id: "barash",
+      name: "Barash",
+      avatar: "assets/img/characters/barash.png",
+      hpMax: 80,
+      hp: 80,
+      damage: 15,
+      critChance: 0.2,
+      critMultiplier: 2.0,
+      wins: 0,
+      losses: 0,
+    },
+    {
+      id: "bibi",
+      name: "bibi",
+      avatar: "assets/img/characters/bibi.png",
+      hpMax: 80,
+      hp: 80,
+      damage: 15,
+      critChance: 0.2,
+      critMultiplier: 2.0,
+      wins: 0,
+      losses: 0,
+    },
+  ];
 
+  // Начальный игрок
+  const player = players[0];
 
   return {
     ZONES,
     enemies,
+    players,
     player,
     getRandomEnemy() {
       const randomIndex = Math.floor(Math.random() * enemies.length);
@@ -238,6 +265,9 @@ export function initData() {
     resetEnemy(enemy) {
       enemy.hp = enemy.hpMax;
       return enemy;
+    },
+    getPlayerById(id) {
+      return players.find((p) => p.id === id);
     },
   };
 }

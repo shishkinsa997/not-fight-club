@@ -26,6 +26,17 @@ export function initUI() {
         }
       });
     });
+
+    // Выбор персонажа
+    document.addEventListener("click", (e) => {
+      const characterOption = e.target.closest(".character-option");
+      if (characterOption) {
+        const characterId = characterOption.getAttribute("data-character-id");
+        if (characterId) {
+          selectCharacter(characterId);
+        }
+      }
+    });
   }
 
   // Обработка атаки
@@ -38,7 +49,7 @@ export function initUI() {
     );
 
     if (!attackZone || defenceZones.length !== 2) {
-      alert("Выберите 1 зону для атаки и 2 зоны для защиты!");
+      alert("Pick 1 Attack zone and 2 Defence zones");
       return;
     }
 
@@ -136,26 +147,26 @@ export function initUI() {
     logsContainer.innerHTML = logs
       .map((log) => {
         const zoneNames = {
-          head: "голову",
-          neck: "шею",
-          body: "тело",
-          belly: "живот",
-          legs: "ноги",
+          head: "head",
+          neck: "neck",
+          body: "body",
+          belly: "belly",
+          legs: "legs",
         };
 
-        const who = log.who === "player" ? "Вы" : "Противник";
-        const target = log.target === "player" ? "вас" : "противника";
+        const who = log.who === "player" ? "You" : "Enemy";
+        const target = log.target === "player" ? "you" : "enemy";
         const zone = zoneNames[log.zone] || log.zone;
         const damage = log.damage;
 
-        let logText = `${who} атаковали ${target} в ${zone}`;
+        let logText = `${who} attack ${target} to ${zone}`;
 
         if (log.blocked) {
-          logText += " - заблокировано!";
+          logText += " - blocked!";
         } else if (log.damage > 0) {
-          logText += ` и нанесли ${damage} урона`;
+          logText += ` and do ${damage} damage`;
           if (log.crit) {
-            logText += " (КРИТИЧЕСКИЙ УДАР!)";
+            logText += " (CRIT!)";
           }
         }
 
@@ -241,7 +252,7 @@ export function initUI() {
       // Обновляем заголовок
       const titleElement = mainScreen.querySelector("h1");
       if (titleElement)
-        titleElement.textContent = `Добро пожаловать, ${player.name}!`;
+        titleElement.textContent = `Welcome, ${player.name}!`;
     }
   }
 
@@ -258,27 +269,97 @@ export function initUI() {
       characterScreen.style.display = "block";
 
       // Обновляем данные персонажа
-      const nameElement = document.getElementById("character-name");
-      const hpElement = document.getElementById("character-hp");
-      const damageElement = document.getElementById("character-damage");
-      const critElement = document.getElementById("character-crit");
-      const critMultElement = document.getElementById("character-crit-mult");
-      const winsElement = document.getElementById("character-wins");
-      const lossesElement = document.getElementById("character-losses");
-      const avatarElement = document.querySelector(
-        "#character-screen .character-avatar-large"
-      );
+      updateCharacterDisplay(player);
 
-      if (nameElement) nameElement.textContent = player.name;
-      if (hpElement) hpElement.textContent = player.hpMax;
-      if (damageElement) damageElement.textContent = player.damage;
-      if (critElement)
-        critElement.textContent = (player.critChance * 100).toFixed(1);
-      if (critMultElement) critMultElement.textContent = player.critMultiplier;
-      if (winsElement) winsElement.textContent = player.wins;
-      if (lossesElement) lossesElement.textContent = player.losses;
-      if (avatarElement) avatarElement.src = player.avatar;
+      // Обновляем выделение выбранного персонажа
+      updateCharacterSelection(player.id);
     }
+  }
+
+  // Обновление отображения персонажа
+  function updateCharacterDisplay(player) {
+    const nameElement = document.getElementById("character-name");
+    const hpElement = document.getElementById("character-hp");
+    const damageElement = document.getElementById("character-damage");
+    const critElement = document.getElementById("character-crit");
+    const critMultElement = document.getElementById("character-crit-mult");
+    const winsElement = document.getElementById("character-wins");
+    const lossesElement = document.getElementById("character-losses");
+    const avatarElement = document.getElementById("selected-character-avatar");
+
+    if (nameElement) nameElement.textContent = player.name;
+    if (hpElement) hpElement.textContent = player.hpMax;
+    if (damageElement) damageElement.textContent = player.damage;
+    if (critElement)
+      critElement.textContent = (player.critChance * 100).toFixed(1);
+    if (critMultElement) critMultElement.textContent = player.critMultiplier;
+    if (winsElement) winsElement.textContent = player.wins;
+    if (lossesElement) lossesElement.textContent = player.losses;
+    if (avatarElement) avatarElement.src = player.avatar;
+  }
+
+  // Обновление выделения выбранного персонажа
+  function updateCharacterSelection(selectedId) {
+    // Убираем выделение со всех персонажей
+    document.querySelectorAll(".character-option").forEach((option) => {
+      option.classList.remove("selected");
+    });
+
+    // Добавляем выделение выбранному персонажу
+    const selectedOption = document.querySelector(
+      `[data-character-id="${selectedId}"]`
+    );
+    if (selectedOption) {
+      selectedOption.classList.add("selected");
+    }
+  }
+
+  // Выбор персонажа
+  function selectCharacter(characterId) {
+    const newPlayer = gameData.getPlayerById(characterId);
+    if (newPlayer) {
+      // Сохраняем текущие победы и поражения
+      const currentPlayer = gameStore.getState().player;
+      if (currentPlayer) {
+        newPlayer.wins = currentPlayer.wins;
+        newPlayer.losses = currentPlayer.losses;
+      }
+
+      // Обновляем игрока
+      gameStore.updatePlayer(newPlayer);
+
+      // Обновляем отображение
+      updateCharacterDisplay(newPlayer);
+      updateCharacterSelection(characterId);
+
+      // Показываем сообщение об успешной смене
+      showMessage(`Character changed to ${newPlayer.name}!`);
+    }
+  }
+
+  // Показать сообщение
+  function showMessage(text) {
+    const message = document.createElement("div");
+    message.className = "message";
+    message.textContent = text;
+    message.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #10b981;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      z-index: 1000;
+      animation: slideIn 0.3s ease-out;
+    `;
+
+    document.body.appendChild(message);
+
+    setTimeout(() => {
+      message.remove();
+    }, 3000);
   }
 
   // Рендер экрана настроек
@@ -351,11 +432,11 @@ export function initUI() {
       registrationScreen.id = "registration-screen";
       registrationScreen.innerHTML = `
         <div class="registration-screen">
-          <h1>Добро пожаловать в Not Fight Club!</h1>
+          <h1>Welcome to the Happy House</h1>
           <div class="registration-form">
-            <label for="player-name-input">Введите ваше имя:</label>
-            <input type="text" id="player-name-input" placeholder="Ваше имя">
-            <button onclick="window.createPlayer()">Создать персонажа</button>
+            <label for="player-name-input">Enter you name:</label>
+            <input type="text" id="player-name-input" placeholder="Name">
+            <button onclick="window.createPlayer()">Create character</button>
           </div>
         </div>
       `;
@@ -380,7 +461,7 @@ export function initUI() {
       gameModule.setGamePhase("main");
       renderCurrentPhase();
     } else {
-      alert("Пожалуйста, введите имя!");
+      alert("Please, enter your name!");
     }
   };
 
@@ -390,11 +471,11 @@ export function initUI() {
 
     if (name) {
       gameModule.updatePlayerName(name);
-      alert("Имя обновлено!");
+      alert("Name updated!");
       // Обновляем UI
       renderCurrentPhase();
     } else {
-      alert("Пожалуйста, введите имя!");
+      alert("Please, enter your name!");
     }
   };
 
