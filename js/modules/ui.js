@@ -87,8 +87,8 @@ export function initUI() {
     }
 
     // Сбрасываем выбор зон
-    attackZone.checked = false;
-    defenceZones.forEach((zone) => (zone.checked = false));
+    // attackZone.checked = false;
+    // defenceZones.forEach((zone) => (zone.checked = false));
   }
 
   // Обновление UI боя

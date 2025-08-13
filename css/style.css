@@ -16,6 +16,34 @@ html {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  width: 100vw;
+  height: 100vh;
+  /* overflow: hidden; */
+}
+
+body {
+  position: relative;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  top: calc(100% - 200px);
+  left: calc(100% - 200px);
+  /* width: 100vw;
+  height: 100vh; */
+  background-image: url(/assets/img/mime.png);
+  background-size: 70%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  z-index: -1;
+}
+
+button {
+  border: none;
+  cursor: pointer;
 }
 
 img {
@@ -82,17 +110,52 @@ li {
   margin: auto;
 }
 
+main {
+  height: calc(100vh - 64px);
+}
+
 .main {
   display: flex;
   flex-direction: column;
   gap: 24px;
   padding: 24px;
+
 }
+
+/* .main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(/assets/img/bg-1.jpg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(5px);
+  transform: scale(0.5);
+  z-index: -1;
+}
+
+.main::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -100vh;
+  background: #9966cb;
+  background-size: contain;
+  background-position: center;
+  z-index: -2;
+}
+*/
 
 .main-content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 24px;
 }
 
@@ -103,6 +166,7 @@ li {
   align-items: center;
   width: 300px;
   gap: 12px;
+
 }
 
 .character-name,
@@ -113,8 +177,10 @@ li {
 
 .character-avatar,
 .enemy-avatar {
-  aspect-ratio: 3/4;
+  aspect-ratio: 1/1;
   border-radius: 12px;
+  border: var(--border);
+  border-radius: 16px;
 }
 
 .character-avatar img,
@@ -184,30 +250,33 @@ li {
   border-radius: 2px;
 }
 
+.btn-attack {
+  padding: 10px 16px;
+  height: 40px;
+  background-color: #7d7d7d;
+  color: #FAFAFA;
+  border-radius: 6px;
+}
+
 .battle-content {
   display: flex;
   flex-direction: column;
   border: var(--border);
   border-radius: 8px;
   padding: 24px;
-  gap: 24px;
+  gap: 8px;
   margin-bottom: auto;
   height: 100%;
-  background: white;
+  overflow-y: hidden;
+  flex: 1;
 }
 
 #battle-screen {
   display: flex;
-  gap: 24px;
-  padding: 24px;
 }
 
 #battle-screen .main-content {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 24px;
 }
 
 .battle-title {
@@ -218,7 +287,8 @@ li {
 .battle-logs {
   display: flex;
   flex-direction: column;
-  max-height: 100%;
+  flex: 1;
+  max-height: 190px;
   height: 100%;
   overflow-y: auto;
   margin-bottom: auto;
@@ -237,17 +307,20 @@ li {
 .log-entry.player {
   border-left: 4px solid #3b82f6;
   background: #eff6ff;
+  opacity: 0.8;
 }
 
 .log-entry.enemy {
   border-left: 4px solid #ef4444;
   background: #fef2f2;
+  opacity: 0.8;
 }
 
 .log-entry.crit {
   background: #fef3c7;
   border-color: #f59e0b;
   font-weight: 600;
+  opacity: 0.8;
 }
 
 .log-entry.blocked {
@@ -306,7 +379,7 @@ li {
 
 .character-info {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   gap: 24px;
   width: 100%;
@@ -394,7 +467,8 @@ li {
 .character-stats,
 .battle-record {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
   gap: 12px;
   text-align: center;
 }
