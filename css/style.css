@@ -1,0 +1,505 @@
+/* Regular (400) */
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("ttf");
+  font-style: normal;
+  font-display: swap; /* Чтобы текст не "моргал" при загрузке */
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+a,
+li {
+  all: unset;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  height: 64px;
+  width: 100%;
+  border-bottom: var(--border);
+}
+
+.page-logo {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.navigation {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.navigation li a {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin: auto;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.character-box,
+.enemy-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  gap: 12px;
+}
+
+.character-name,
+.enemy-name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.character-avatar,
+.enemy-avatar {
+  aspect-ratio: 3/4;
+  border-radius: 12px;
+}
+
+.character-avatar img,
+.enemy-avatar img {
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.character-health,
+.enemy-health {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.character-health-bar,
+.enemy-health-bar {
+  width: 300px;
+  height: 16px;
+  border-radius: 999px;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.battle-info {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.picker-box {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.attack-zones,
+.defence-zones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.attack-zones p,
+.defence-zones p {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.check-box-wrapper {
+  display: flex;
+}
+
+.check-box-label {
+  order: 2;
+  margin: 0 8px;
+}
+
+.check-box-input {
+  border-radius: 2px;
+}
+
+.battle-content {
+  display: flex;
+  flex-direction: column;
+  border: var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  gap: 24px;
+  margin-bottom: auto;
+  height: 100%;
+  background: white;
+}
+
+#battle-screen {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+}
+
+#battle-screen .main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.battle-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.battle-logs {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  height: 100%;
+  overflow-y: auto;
+  margin-bottom: auto;
+  gap: 8px;
+}
+
+.log-entry {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.log-entry.player {
+  border-left: 4px solid #3b82f6;
+  background: #eff6ff;
+}
+
+.log-entry.enemy {
+  border-left: 4px solid #ef4444;
+  background: #fef2f2;
+}
+
+.log-entry.crit {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  font-weight: 600;
+}
+
+.log-entry.blocked {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  opacity: 0.8;
+}
+
+/* Стили для экранов */
+.main-screen,
+.character-screen,
+.settings-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 48px;
+  text-align: center;
+}
+
+.main-screen h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.player-stats {
+  display: flex;
+  gap: 24px;
+  font-size: 18px;
+}
+
+.player-stats p {
+  padding: 12px 24px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.start-battle-btn {
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.start-battle-btn:hover {
+  background: #2563eb;
+}
+
+.character-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.character-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.character-selection h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.character-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: white;
+}
+
+.character-option:hover {
+  border-color: #3b82f6;
+  background: #f0f9ff;
+  transform: translateY(-2px);
+}
+
+.character-option.selected {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.character-avatar-small {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.character-option span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.selected-character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  background: #f9fafb;
+  width: 100%;
+}
+
+.character-avatar-large {
+  width: 200px;
+  height: 200px;
+  border-radius: 16px;
+  object-fit: contain;
+}
+
+.character-stats,
+.battle-record {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+
+.character-stats p,
+.battle-record p {
+  font-size: 16px;
+  padding: 8px 16px;
+  background: #f3f4f6;
+  border-radius: 6px;
+}
+
+.setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.setting-group label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.setting-group input {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.setting-group button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.setting-group button:hover {
+  background: #059669;
+}
+
+.registration-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 48px;
+  text-align: center;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.registration-form label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.registration-form input {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.registration-form button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.registration-form button:hover {
+  background: #2563eb;
+}
+
+/* Анимация для сообщений */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.message {
+  animation: slideIn 0.3s ease-out;
+}
