@@ -1,7 +1,7 @@
 /* Regular (400) */
 @font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter-VariableFont_opsz,wght.ttf') format('ttf');
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("ttf");
   font-style: normal;
   font-display: swap; /* Чтобы текст не "моргал" при загрузке */
 }
@@ -34,7 +34,8 @@ img {
   font-style: normal;
 }
 
-a, li {
+a,
+li {
   all: unset;
 }
 
@@ -95,7 +96,8 @@ a, li {
   gap: 24px;
 }
 
-.character-box, .enemy-box {
+.character-box,
+.enemy-box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,22 +105,26 @@ a, li {
   gap: 12px;
 }
 
-.character-name, .enemy-name {
+.character-name,
+.enemy-name {
   font-size: 16px;
   font-weight: 600;
 }
 
-.character-avatar, .enemy-avatar {
+.character-avatar,
+.enemy-avatar {
   aspect-ratio: 3/4;
   border-radius: 12px;
 }
 
-.character-avatar img, .enemy-avatar img{
+.character-avatar img,
+.enemy-avatar img {
   border-radius: 12px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
-.character-health, .enemy-health {
+.character-health,
+.enemy-health {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -126,7 +132,8 @@ a, li {
   gap: 8px;
 }
 
-.character-health-bar, .enemy-health-bar {
+.character-health-bar,
+.enemy-health-bar {
   width: 300px;
   height: 16px;
   border-radius: 999px;
@@ -150,13 +157,15 @@ a, li {
   justify-content: space-between;
 }
 
-.attack-zones, .defence-zones {
+.attack-zones,
+.defence-zones {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.attack-zones p, .defence-zones p {
+.attack-zones p,
+.defence-zones p {
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 4px;
@@ -184,6 +193,21 @@ a, li {
   gap: 24px;
   margin-bottom: auto;
   height: 100%;
+  background: white;
+}
+
+#battle-screen {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+}
+
+#battle-screen .main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
 }
 
 .battle-title {
@@ -198,4 +222,195 @@ a, li {
   height: 100%;
   overflow-y: auto;
   margin-bottom: auto;
+  gap: 8px;
+}
+
+.log-entry {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.log-entry.player {
+  border-left: 4px solid #3b82f6;
+  background: #eff6ff;
+}
+
+.log-entry.enemy {
+  border-left: 4px solid #ef4444;
+  background: #fef2f2;
+}
+
+.log-entry.crit {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  font-weight: 600;
+}
+
+.log-entry.blocked {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  opacity: 0.8;
+}
+
+/* Стили для экранов */
+.main-screen,
+.character-screen,
+.settings-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 48px;
+  text-align: center;
+}
+
+.main-screen h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.player-stats {
+  display: flex;
+  gap: 24px;
+  font-size: 18px;
+}
+
+.player-stats p {
+  padding: 12px 24px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.start-battle-btn {
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.start-battle-btn:hover {
+  background: #2563eb;
+}
+
+.character-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.character-avatar-large {
+  width: 200px;
+  height: 200px;
+  border-radius: 16px;
+  object-fit: contain;
+}
+
+.character-stats,
+.battle-record {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+
+.character-stats p,
+.battle-record p {
+  font-size: 16px;
+  padding: 8px 16px;
+  background: #f3f4f6;
+  border-radius: 6px;
+}
+
+.setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.setting-group label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.setting-group input {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.setting-group button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.setting-group button:hover {
+  background: #059669;
+}
+
+.registration-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 48px;
+  text-align: center;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.registration-form label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.registration-form input {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.registration-form button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.registration-form button:hover {
+  background: #2563eb;
 }

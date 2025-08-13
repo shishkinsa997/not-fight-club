@@ -1,147 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/root.css">
-  <link rel="stylesheet" href="./css/media.css">
-  <link rel="icon" href="./assets/favicon.ico">
-  <title>Happy House</title>
-</head>
-<body>
-  <header class="container header">
-    <div class="page-logo">Battle</div>
-    <nav>
-      <ul class="navigation">
-        <li>
-          <a href="">
-            <div class="icon">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 14.6667V8H10V14.6667M2 6L8 1.33333L14 6V13.3333C14 13.687 13.8595 14.0261 13.6095 14.2761C13.3594 14.5262 13.0203 14.6667 12.6667 14.6667H3.33333C2.97971 14.6667 2.64057 14.5262 2.39052 14.2761C2.14048 14.0261 2 13.687 2 13.3333V6Z" stroke="#18181B" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            Main
-          </a></li>
-        <li>
-          <a href="">
-            <div class="icon">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_7_194)">
-              <path d="M4.66683 13.7747V12.6667C4.66683 12.313 4.80731 11.9739 5.05735 11.7239C5.3074 11.4738 5.64654 11.3333 6.00016 11.3333H10.0002C10.3538 11.3333 10.6929 11.4738 10.943 11.7239C11.193 11.9739 11.3335 12.313 11.3335 12.6667V13.7747M14.6668 8C14.6668 11.6819 11.6821 14.6667 8.00016 14.6667C4.31826 14.6667 1.3335 11.6819 1.3335 8C1.3335 4.3181 4.31826 1.33333 8.00016 1.33333C11.6821 1.33333 14.6668 4.3181 14.6668 8ZM10.0002 6.66667C10.0002 7.77124 9.10473 8.66667 8.00016 8.66667C6.89559 8.66667 6.00016 7.77124 6.00016 6.66667C6.00016 5.5621 6.89559 4.66667 8.00016 4.66667C9.10473 4.66667 10.0002 5.5621 10.0002 6.66667Z" stroke="#18181B" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
-              </g>
-              <defs>
-              <clipPath id="clip0_7_194">
-              <rect width="16" height="16" fill="white"/>
-              </clipPath>
-              </defs>
-              </svg>
-            </div>
-            Character
-          </a></li>
-        <li>
-          <a href="">
-            <div class="icon">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8.14667 1.33333H7.85333C7.49971 1.33333 7.16057 1.47381 6.91053 1.72386C6.66048 1.97391 6.52 2.31305 6.52 2.66667V2.78667C6.51976 3.02048 6.45804 3.25013 6.34103 3.45256C6.22401 3.65499 6.05583 3.82309 5.85333 3.94L5.56667 4.10667C5.36398 4.22369 5.13405 4.2853 4.9 4.2853C4.66595 4.2853 4.43603 4.22369 4.23333 4.10667L4.13333 4.05333C3.82738 3.87684 3.46389 3.82896 3.12267 3.92021C2.78145 4.01145 2.49037 4.23436 2.31333 4.54L2.16667 4.79333C1.99018 5.09929 1.9423 5.46278 2.03354 5.804C2.12478 6.14522 2.34769 6.4363 2.65333 6.61333L2.75333 6.68C2.95485 6.79634 3.12241 6.96339 3.23937 7.16455C3.35632 7.36572 3.4186 7.59398 3.42 7.82667V8.16667C3.42093 8.40161 3.35977 8.63264 3.2427 8.83634C3.12563 9.04004 2.95681 9.20919 2.75333 9.32667L2.65333 9.38667C2.34769 9.5637 2.12478 9.85478 2.03354 10.196C1.9423 10.5372 1.99018 10.9007 2.16667 11.2067L2.31333 11.46C2.49037 11.7656 2.78145 11.9886 3.12267 12.0798C3.46389 12.171 3.82738 12.1232 4.13333 11.9467L4.23333 11.8933C4.43603 11.7763 4.66595 11.7147 4.9 11.7147C5.13405 11.7147 5.36398 11.7763 5.56667 11.8933L5.85333 12.06C6.05583 12.1769 6.22401 12.345 6.34103 12.5474C6.45804 12.7499 6.51976 12.9795 6.52 13.2133V13.3333C6.52 13.687 6.66048 14.0261 6.91053 14.2761C7.16057 14.5262 7.49971 14.6667 7.85333 14.6667H8.14667C8.50029 14.6667 8.83943 14.5262 9.08948 14.2761C9.33953 14.0261 9.48 13.687 9.48 13.3333V13.2133C9.48024 12.9795 9.54196 12.7499 9.65898 12.5474C9.77599 12.345 9.94418 12.1769 10.1467 12.06L10.4333 11.8933C10.636 11.7763 10.866 11.7147 11.1 11.7147C11.3341 11.7147 11.564 11.7763 11.7667 11.8933L11.8667 11.9467C12.1726 12.1232 12.5361 12.171 12.8773 12.0798C13.2186 11.9886 13.5096 11.7656 13.6867 11.46L13.8333 11.2C14.0098 10.894 14.0577 10.5306 13.9665 10.1893C13.8752 9.84811 13.6523 9.55703 13.3467 9.38L13.2467 9.32667C13.0432 9.20919 12.8744 9.04004 12.7573 8.83634C12.6402 8.63264 12.5791 8.40161 12.58 8.16667V7.83333C12.5791 7.59839 12.6402 7.36737 12.7573 7.16366C12.8744 6.95996 13.0432 6.79081 13.2467 6.67333L13.3467 6.61333C13.6523 6.4363 13.8752 6.14522 13.9665 5.804C14.0577 5.46278 14.0098 5.09929 13.8333 4.79333L13.6867 4.54C13.5096 4.23436 13.2186 4.01145 12.8773 3.92021C12.5361 3.82896 12.1726 3.87684 11.8667 4.05333L11.7667 4.10667C11.564 4.22369 11.3341 4.2853 11.1 4.2853C10.866 4.2853 10.636 4.22369 10.4333 4.10667L10.1467 3.94C9.94418 3.82309 9.77599 3.65499 9.65898 3.45256C9.54196 3.25013 9.48024 3.02048 9.48 2.78667V2.66667C9.48 2.31305 9.33953 1.97391 9.08948 1.72386C8.83943 1.47381 8.50029 1.33333 8.14667 1.33333Z" stroke="#18181B" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z" stroke="#18181B" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            Settings
-          </a></li>
-      </ul>
-    </nav>
-  </header>
-  <main class="container main">
-    <div class="main-content">
-      <div class="character-box">
-        <div class="character-name">Super</div>
-        <div class="character-avatar">
-          <img src="/assets/img/super.png" alt="super">
-        </div>
-        <div class="character-health">
-          <progress class="character-health-bar" value="150" max="150"></progress>
-          <p class="character-health-count">
-            <span id="health">150</span> / 150
-          </p>
-        </div>
-      </div>
-      <div class="table">
-        <p class="battle-info">Please pick 1 Attack zone and 2 Defence zones</p>
-        <div class="picker-box">
-          <div class="attack-zones">
-            <p>Attack Zones</p>
-            <div class="check-box-wrapper">
-              <label class="check-box-label">Head</label>
-              <input class="check-box-input" type="radio">
-            </div>
-            <div class="check-box-wrapper">
-              <label class="check-box-label">Neck</label>
-              <input class="check-box-input" type="radio" >
-            </div>
-            <div class="check-box-wrapper">
-              <label class="check-box-label">Body</label>
-              <input class="check-box-input" type="radio">
-            </div>
-            <div class="check-box-wrapper">
-              <label class="check-box-label">Belly</label>
-              <input class="check-box-input" type="radio" readonly="">
-            </div>
-            <div class="check-box-wrapper">
-              <label class="check-box-label">Legs</label>
-              <input class="check-box-input" type="radio" readonly="">
-            </div>
-          </div>
-          <div class="defence-zones">
-            <p> Defence Zones</p>
-            <div class="check-box-wrapper">
-              <label class="check-box-label">Head</label>
-              <input class="check-box-input" type="radio" readonly="">
-            </div>
-            <div class="check-box-wrapper">
-              <label class="check-box-label">Neck</label>
-              <input class="check-box-input" type="radio" readonly="">
-            </div>
-            <div class="check-box-wrapper">
-              <label class="check-box-label">Body</label>
-              <input class="check-box-input" type="radio" readonly="">
-            </div>
-            <div class="check-box-wrapper">
-              <label class="check-box-label">Belly</label>
-              <input class="check-box-input" type="radio" readonly="">
-            </div>
-            <div class="check-box-wrapper">
-              <label class="check-box-label">Legs</label>
-              <input class="check-box-input" type="radio" readonly="">
-            </div>
-          </div>
-        </div>
-        <button>Attack!</button>
-      </div>
-      <div class="enemy-box ">
-        <div class="enemy-name">Regishka</div>
-        <div class="enemy-avatar">
-          <img src="/assets/img/moana.png" alt="moana">
-        </div>
-        <div class="enemy-health">
-          <progress class="enemy-health-bar" value="150" max="150"></progress>
-          <p class="enemy-health-count">
-            <span id="health-enemy">150</span> / 150
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="battle-content">
-      <p class="battle-title">Battle Log</p>
-      <div class="battle-logs">
-        dsfsdfsf
-      </div>
-    </div>
-  </main>
-  <footer class="container">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/root.css" />
+    <link rel="stylesheet" href="./css/media.css" />
+    <link rel="icon" href="./assets/favicon.ico" />
+    <title>Happy House</title>
+  </head>
+  <body>
+    <header class="container header">
+      <div class="page-logo">Happy House</div>
+      <nav>
+        <ul class="navigation">
+          <li>
+            <a href="#" data-phase="main">
+              <div class="icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 14.6667V8H10V14.6667M2 6L8 1.33333L14 6V13.3333C14 13.687 13.8595 14.0261 13.6095 14.2761C13.3594 14.5262 13.0203 14.6667 12.6667 14.6667H3.33333C2.97971 14.6667 2.64057 14.0261 2.39052 14.2761C2.14048 14.0261 2 13.687 2 13.3333V6Z"
+                    stroke="#18181B"
+                    stroke-width="1.33"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              Main
+            </a>
+          </li>
+          <li>
+            <a href="#" data-phase="character">
+              <div class="icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_7_194)">
+                    <path
+                      d="M4.66683 13.7747V12.6667C4.66683 12.313 4.80731 11.9739 5.05735 11.7239C5.3074 11.4738 5.64654 11.3333 6.00016 11.3333H10.0002C10.3538 11.3333 10.6929 11.4738 10.943 11.7239C11.193 11.9739 11.3335 12.313 11.3335 12.6667V13.7747M14.6668 8C14.6668 11.6819 11.6821 14.6667 8.00016 14.6667C4.31826 14.6667 1.3335 11.6819 1.3335 8C1.3335 4.3181 4.31826 1.33333 8.00016 1.33333C11.6821 1.33333 14.6668 4.3181 14.6668 8ZM10.0002 6.66667C10.0002 7.77124 9.10473 8.66667 8.00016 8.66667C6.89559 8.66667 6.00016 7.77124 6.00016 6.66667C6.00016 5.5621 6.89559 4.66667 8.00016 4.66667C9.10473 4.66667 10.0002 5.5621 10.0002 6.66667Z"
+                      stroke="#18181B"
+                      stroke-width="1.33"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_7_194">
+                      <rect width="16" height="16" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              Character
+            </a>
+          </li>
+          <li>
+            <a href="#" data-phase="settings">
+              <div class="icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.14667 1.33333H7.85333C7.49971 1.33333 7.16057 1.47381 6.91053 1.72386C6.66048 1.97391 6.52 2.31305 6.52 2.66667V2.78667C6.51976 3.02048 6.45804 3.25013 6.34103 3.45256C6.22401 3.65499 6.05583 3.82309 5.85333 3.94L5.56667 4.10667C5.36398 4.22369 5.13405 4.2853 4.9 4.2853C4.66595 4.2853 4.43603 4.22369 4.23333 4.10667L4.13333 4.05333C3.82738 3.87684 3.46389 3.82896 3.12267 3.92021C2.78145 4.01145 2.49037 4.23436 2.31333 4.54L2.16667 4.79333C1.99018 5.09929 1.9423 5.46278 2.03354 5.804C2.12478 6.14522 2.34769 6.4363 2.65333 6.61333L2.75333 6.68C2.95485 6.79634 3.12241 6.96339 3.23937 7.16455C3.35632 7.36572 3.4186 7.59398 3.42 7.82667V8.16667C3.42093 8.40161 3.35977 8.63264 3.2427 8.83634C3.12563 9.04004 2.95681 9.20919 2.75333 9.32667L2.65333 9.38667C2.34769 9.5637 2.12478 9.85478 2.03354 10.196C1.9423 10.5372 1.99018 10.9007 2.16667 11.2067L2.31333 11.46C2.49037 11.7656 2.78145 11.9886 3.12267 12.0798C3.46389 12.171 3.82738 12.1232 4.13333 11.9467L4.23333 11.8933C4.43603 11.7763 4.66595 11.7147 4.9 11.7147C5.13405 11.7147 5.36398 11.7763 5.56667 11.8933L5.85333 12.06C6.05583 12.1769 6.22401 12.345 6.34103 12.5474C6.45804 12.7499 6.51976 12.9795 6.52 13.2133V13.3333C6.52 13.687 6.66048 14.0261 6.91053 14.2761C7.16057 14.5262 7.49971 14.6667 7.85333 14.6667H8.14667C8.50029 14.6667 8.83943 14.5262 9.08948 14.2761C9.33953 14.0261 9.48 13.687 9.48 13.3333V13.2133C9.48024 12.9795 9.54196 12.7499 9.65898 12.5474C9.77599 12.345 9.94418 12.1769 10.1467 12.06L10.4333 11.8933C10.636 11.7763 10.866 11.7147 11.1 11.7147C11.3341 11.7147 11.564 11.7763 11.7667 11.8933L11.8667 11.9467C12.1726 12.1232 12.5361 12.171 12.8773 12.0798C13.2186 11.9886 13.5096 11.7656 13.6867 11.46L13.8333 11.2C14.0098 10.894 14.0577 10.5306 13.9665 10.1893C13.8752 9.84811 13.6523 9.55703 13.3467 9.38L13.2467 9.32667C13.0432 9.20919 12.8744 9.04004 12.7573 8.83634C12.6402 8.63264 12.5791 8.40161 12.58 8.16667V7.83333C12.5791 7.59839 12.6402 7.36737 12.7573 7.16366C12.8744 6.95996 13.0432 6.79081 13.2467 6.67333L13.3467 6.61333C13.6523 6.4363 13.8752 6.14522 13.9665 5.804C14.0577 5.46278 14.0098 5.09929 13.8333 4.79333L13.6867 4.54C13.5096 4.23436 13.2186 4.01145 12.8773 3.92021C12.5361 3.82896 12.1726 3.87684 11.8667 4.05333L11.7667 4.10667C11.564 4.22369 11.3341 4.2853 11.1 4.2853C10.866 4.2853 10.636 4.22369 10.4333 4.10667L10.1467 3.94C9.94418 3.82309 9.77599 3.65499 9.65898 3.45256C9.54196 3.25013 9.48024 3.02048 9.48 2.78667V2.66667C9.48 2.31305 9.33953 1.97391 9.08948 1.72386C8.83943 1.47381 8.50029 1.33333 8.14667 1.33333Z"
+                    stroke="#18181B"
+                    stroke-width="1.33"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10473 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89559 10 8 10Z"
+                    stroke="#18181B"
+                    stroke-width="1.33"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              Settings
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-  </footer>
-  <script type="module" defer="defer" src="js/main.js"></script>
-</body>
+    <main class="container main">
+      <!-- Главный экран -->
+      <div class="main-content" id="main-screen">
+        <div class="main-screen">
+          <h1>Welcome to the Happy House!</h1>
+          <div class="player-stats">
+            <p>Wins: <span id="player-wins">0</span></p>
+            <p>Losses: <span id="player-losses">0</span></p>
+          </div>
+          <button class="start-battle-btn" onclick="window.startNewBattle()">
+            Fight!
+          </button>
+        </div>
+      </div>
+
+      <!-- Экран персонажа -->
+      <div class="main-content" id="character-screen" style="display: none">
+        <div class="character-screen">
+          <div class="character-info">
+            <img
+              src="assets/img/characters/krosh.png"
+              alt="avatar"
+              class="character-avatar-large"
+            />
+            <h2 id="character-name">Player</h2>
+            <div class="character-stats">
+              <p>Health: <span id="character-hp">100</span></p>
+              <p>Damage: <span id="character-damage">10</span></p>
+              <p>Crit chance: <span id="character-crit">10.0</span>%</p>
+              <p>crit multiplier: <span id="character-crit-mult">1.5</span>x</p>
+            </div>
+            <div class="battle-record">
+              <p>Wins: <span id="character-wins">0</span></p>
+              <p>Losses: <span id="character-losses">0</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Экран настроек -->
+      <div class="main-content" id="settings-screen" style="display: none">
+        <div class="settings-screen">
+          <h2>Setting</h2>
+          <div class="setting-group">
+            <label for="player-name">Player name:</label>
+            <input type="text" id="player-name" value="player" />
+            <button onclick="window.updatePlayerName()">Save</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Экран боя -->
+      <div class="main-content" id="battle-screen" style="display: none">
+        <div class="character-box">
+          <div class="character-name">Player</div>
+          <div class="character-avatar">
+            <img src="assets/img/characters/krosh.png" alt="player" />
+          </div>
+          <div class="character-health">
+            <progress
+              class="character-health-bar"
+              value="100"
+              max="100"
+            ></progress>
+            <p class="character-health-count">
+              <span id="health">100</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="table">
+          <p class="battle-info">Pick 1 Attack zone and 2 Defence zones</p>
+          <div class="picker-box">
+            <div class="attack-zones">
+              <p>Attack zones (pick 1)</p>
+              <div class="check-box-wrapper">
+                <label class="check-box-label">Head</label>
+                <input
+                  class="check-box-input"
+                  type="radio"
+                  name="attack"
+                  value="head"
+                />
+              </div>
+              <div class="check-box-wrapper">
+                <label class="check-box-label">Neck</label>
+                <input
+                  class="check-box-input"
+                  type="radio"
+                  name="attack"
+                  value="neck"
+                />
+              </div>
+              <div class="check-box-wrapper">
+                <label class="check-box-label">Body</label>
+                <input
+                  class="check-box-input"
+                  type="radio"
+                  name="attack"
+                  value="body"
+                />
+              </div>
+              <div class="check-box-wrapper">
+                <label class="check-box-label">Belly</label>
+                <input
+                  class="check-box-input"
+                  type="radio"
+                  name="attack"
+                  value="belly"
+                />
+              </div>
+              <div class="check-box-wrapper">
+                <label class="check-box-label">Legs</label>
+                <input
+                  class="check-box-input"
+                  type="radio"
+                  name="attack"
+                  value="legs"
+                />
+              </div>
+            </div>
+            <div class="defence-zones">
+              <p>Defence zones (pick 2)</p>
+              <div class="check-box-wrapper">
+                <label class="check-box-label">Head</label>
+                <input
+                  class="check-box-input"
+                  type="checkbox"
+                  name="defence"
+                  value="head"
+                />
+              </div>
+              <div class="check-box-wrapper">
+                <label class="check-box-label">Neck</label>
+                <input
+                  class="check-box-input"
+                  type="checkbox"
+                  name="defence"
+                  value="neck"
+                />
+              </div>
+              <div class="check-box-wrapper">
+                <label class="check-box-label">Body</label>
+                <input
+                  class="check-box-input"
+                  type="checkbox"
+                  name="defence"
+                  value="body"
+                />
+              </div>
+              <div class="check-box-wrapper">
+                <label class="check-box-label">Belly</label>
+                <input
+                  class="check-box-input"
+                  type="checkbox"
+                  name="defence"
+                  value="belly"
+                />
+              </div>
+              <div class="check-box-wrapper">
+                <label class="check-box-label">Legs</label>
+                <input
+                  class="check-box-input"
+                  type="checkbox"
+                  name="defence"
+                  value="legs"
+                />
+              </div>
+            </div>
+          </div>
+          <button onclick="window.handleAttack()">Attack!</button>
+        </div>
+
+        <div class="enemy-box">
+          <div class="enemy-name">Enemy</div>
+          <div class="enemy-avatar">
+            <img src="assets/img/enemy/cuddles.png" alt="enemy" />
+          </div>
+          <div class="enemy-health">
+            <progress class="enemy-health-bar" value="100" max="100"></progress>
+            <p class="enemy-health-count">
+              <span id="health-enemy">100</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Логи боя -->
+      <div class="battle-content" id="battle-content" style="display: none">
+        <p class="battle-title">Battle Logs</p>
+        <div class="battle-logs"></div>
+      </div>
+    </main>
+
+    <footer class="container"></footer>
+    <script type="module" defer="defer" src="js/main.js"></script>
+  </body>
 </html>
