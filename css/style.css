@@ -67,6 +67,11 @@ li {
   all: unset;
 }
 
+
+
+
+
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -110,8 +115,13 @@ li {
   margin: auto;
 }
 
+
+
+
+
+
 main {
-  height: calc(100vh - 64px);
+  height: calc(100vh - 70px);
 }
 
 .main {
@@ -266,13 +276,13 @@ main {
   border-radius: 2px;
 }
 
-.btn-attack {
+/* .btn-attack {
   padding: 10px 16px;
   height: 40px;
   background-color: var(--primary);
-  color: #FAFAFA;
+  color: #fff;
   border-radius: 6px;
-}
+} */
 
 .btn-attack:hover {
   background-color: var(--hover);
@@ -280,6 +290,7 @@ main {
 
 .battle-content {
   display: flex;
+  position: relative;
   flex-direction: column;
   border: var(--border);
   border-radius: 8px;
@@ -289,6 +300,20 @@ main {
   height: 100%;
   overflow-y: hidden;
   flex: 1;
+  /* background-color: var(--grey); */
+}
+
+.battle-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 8px;
+  background-color: var(--grey);
+  /* opacity: 0.8; */
+  z-index: -1;
 }
 
 #battle-screen {
@@ -300,7 +325,7 @@ main {
 }
 
 .battle-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -308,7 +333,6 @@ main {
   display: flex;
   flex-direction: column;
   flex: 1;
-  max-height: 190px;
   height: 100%;
   overflow-y: auto;
   margin-bottom: auto;
@@ -349,7 +373,13 @@ main {
   opacity: 0.8;
 }
 
-/* Стили для экранов */
+
+
+
+
+
+
+
 .main-screen,
 .character-screen,
 .settings-screen {
@@ -381,7 +411,7 @@ main {
   font-weight: 600;
 }
 
-.start-battle-btn {
+.start-battle-btn, .btn-attack {
   padding: 16px 32px;
   font-size: 18px;
   font-weight: 600;
@@ -393,31 +423,44 @@ main {
   transition: background 0.2s;
 }
 
-.start-battle-btn:hover {
+.start-battle-btn:hover, .btn-attack:hover {
   background: var(--hover);
 }
 
-.character-info {
+
+
+
+
+
+
+
+/* FIX: На 1400px убрать скролл */
+
+.character-selection {
   display: flex;
   /* flex-direction: column; */
-  align-items: center;
+  align-items: stretch;
   gap: 24px;
   width: 100%;
   max-width: 800px;
+  height: 100%;
 }
 
-.character-selection {
+.character-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
   width: 100%;
+  max-width: 800px;
 }
 
-.character-selection h3 {
+.character-info h3 {
   font-size: 20px;
   font-weight: 600;
   color: #374151;
+  /* text-align: center; */
+  align-self: flex-start;
 }
 
 .character-grid {
@@ -425,6 +468,7 @@ main {
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   width: 100%;
+  height: 608px;
 }
 
 .character-option {
@@ -468,38 +512,78 @@ main {
 .selected-character {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   gap: 16px;
   padding: 24px;
-  border: 2px solid #e5e7eb;
+  border: var(--border);
   border-radius: 16px;
-  background: #f9fafb;
+  background: var(--grey);
   width: 100%;
+  height: 608px;
 }
 
 .character-avatar-large {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 16px;
   object-fit: contain;
+  align-self: center;
 }
+
+/* TODO: переделать окно статов */
 
 .character-stats,
 .battle-record {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 12px;
-  text-align: center;
+  text-align: start;
+  margin-bottom: auto;
 }
 
 .character-stats p,
 .battle-record p {
   font-size: 16px;
-  padding: 8px 16px;
+  margin-right: auto;
+  /* padding: 8px 16px;
   background: #f3f4f6;
-  border-radius: 6px;
+  border-radius: 6px; */
 }
+
+.character-stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+}
+
+.stat-icon {
+  width: 16px;
+  height: 16px;
+  /* margin: auto; */
+  object-fit: contain;
+}
+
+.stat-progress-wrapper {
+  width: 160px;
+  height: 12px;
+  /* margin-left: auto; */
+  background: #b0b0b0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.stat-progress {
+  height: 100%;
+  background: var(--secondary);
+
+}
+
+
+
+
+
 
 .setting-group {
   display: flex;
@@ -516,7 +600,7 @@ main {
 .setting-group input {
   padding: 12px 16px;
   font-size: 16px;
-  border: 2px solid #e5e7eb;
+  border: var(--border);
   border-radius: 8px;
   width: 300px;
 }
@@ -526,7 +610,7 @@ main {
   font-size: 16px;
   font-weight: 600;
   background: var(--save);
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -536,6 +620,12 @@ main {
 .setting-group button:hover {
   background: var(--save-hover);
 }
+
+
+
+
+
+
 
 .registration-screen {
   display: flex;
@@ -561,7 +651,7 @@ main {
 .registration-form input {
   padding: 12px 16px;
   font-size: 16px;
-  border: 2px solid #e5e7eb;
+  border: var(--border);
   border-radius: 8px;
   width: 300px;
 }
@@ -571,7 +661,7 @@ main {
   font-size: 16px;
   font-weight: 600;
   background: var(--primary);
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -582,7 +672,12 @@ main {
   background: var(--hover);
 }
 
-/* Анимация для сообщений */
+
+
+
+
+
+
 @keyframes slideIn {
   from {
     transform: translateX(100%);

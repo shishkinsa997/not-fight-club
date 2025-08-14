@@ -3,7 +3,6 @@ export function initUI() {
   let gameData = null;
   let gameStore = null;
 
-  // Инициализация UI
   function init(game, data, store) {
     gameModule = game;
     gameData = data;
@@ -13,9 +12,7 @@ export function initUI() {
     renderCurrentPhase();
   }
 
-  // Настройка обработчиков событий
   function setupEventListeners() {
-    // Навигация
     document.querySelectorAll(".navigation a").forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
@@ -61,16 +58,13 @@ export function initUI() {
     const state = gameStore.getState();
     const enemy = state.currentEnemy;
 
-    // Действия противника (случайные)
     const enemyAction = {
       attacks: gameModule.pickUniqueZones(gameData.ZONES, enemy.attackCount),
       defends: gameModule.pickUniqueZones(gameData.ZONES, enemy.blockCount),
     };
 
-    // Разрешаем ход
     const events = gameModule.resolveTurn(playerAction, enemyAction);
 
-    // Обновляем UI
     updateBattleUI();
     renderBattleLogs();
 
@@ -86,9 +80,6 @@ export function initUI() {
       }, 1000);
     }
 
-    // Сбрасываем выбор зон
-    // attackZone.checked = false;
-    // defenceZones.forEach((zone) => (zone.checked = false));
   }
 
   // Обновление UI боя
@@ -184,7 +175,6 @@ export function initUI() {
     const state = gameStore.getState();
     const phase = state.gamePhase;
 
-    // Скрываем все экраны
     hideAllScreens();
 
     switch (phase) {
@@ -203,7 +193,6 @@ export function initUI() {
     }
   }
 
-  // Скрыть все экраны
   function hideAllScreens() {
     const screens = [
       "main-screen",
@@ -216,11 +205,9 @@ export function initUI() {
       if (screen) screen.style.display = "none";
     });
 
-    // Скрываем логи боя
     const battleContent = document.getElementById("battle-content");
     if (battleContent) battleContent.style.display = "none";
 
-    // Скрываем экран регистрации
     const registrationScreen = document.getElementById("registration-screen");
     if (registrationScreen) {
       registrationScreen.remove();
@@ -233,23 +220,19 @@ export function initUI() {
     const player = state.player;
 
     if (!player) {
-      // Показываем экран регистрации
       showRegistrationScreen();
       return;
     }
 
-    // Показываем главный экран
     const mainScreen = document.getElementById("main-screen");
     if (mainScreen) {
       mainScreen.style.display = "block";
 
-      // Обновляем статистику
       const winsElement = document.getElementById("player-wins");
       const lossesElement = document.getElementById("player-losses");
       if (winsElement) winsElement.textContent = player.wins;
       if (lossesElement) lossesElement.textContent = player.losses;
 
-      // Обновляем заголовок
       const titleElement = mainScreen.querySelector("h1");
       if (titleElement)
         titleElement.textContent = `Welcome, ${player.name}!`;
@@ -263,18 +246,17 @@ export function initUI() {
 
     if (!player) return;
 
-    // Показываем экран персонажа
     const characterScreen = document.getElementById("character-screen");
     if (characterScreen) {
       characterScreen.style.display = "block";
 
-      // Обновляем данные персонажа
       updateCharacterDisplay(player);
 
-      // Обновляем выделение выбранного персонажа
       updateCharacterSelection(player.id);
     }
   }
+
+  // TODO: Добавить абилки для персонажей
 
   // Обновление отображения персонажа
   function updateCharacterDisplay(player) {
@@ -286,6 +268,12 @@ export function initUI() {
     const winsElement = document.getElementById("character-wins");
     const lossesElement = document.getElementById("character-losses");
     const avatarElement = document.getElementById("selected-character-avatar");
+    const weaponElement = document.getElementById("character-weapon");
+
+    const hpElementBar = document.getElementById("character-hp-bar");
+    const damageElementBar = document.getElementById("character-damage-bar");
+    const critElementBar = document.getElementById("character-crit-bar");
+    const critMultElementBar = document.getElementById("character-crit-mult-bar");
 
     if (nameElement) nameElement.textContent = player.name;
     if (hpElement) hpElement.textContent = player.hpMax;
@@ -296,16 +284,19 @@ export function initUI() {
     if (winsElement) winsElement.textContent = player.wins;
     if (lossesElement) lossesElement.textContent = player.losses;
     if (avatarElement) avatarElement.src = player.avatar;
+    if (weaponElement) weaponElement.textContent = player.weapon;
+
+    if (hpElementBar) hpElementBar.style.width = (player.hpMax * 100 / 150) + "%";
+    if (damageElementBar) damageElementBar.style.width = (player.damage * 100 / 30) + "%";
+    if (critElementBar) critElementBar.style.width = player.critChance * 10000 / 30 + "%";
+    if (critMultElementBar) critMultElementBar.style.width = (player.critMultiplier * 100 / 3) + "%";
   }
 
-  // Обновление выделения выбранного персонажа
   function updateCharacterSelection(selectedId) {
-    // Убираем выделение со всех персонажей
     document.querySelectorAll(".character-option").forEach((option) => {
       option.classList.remove("selected");
     });
 
-    // Добавляем выделение выбранному персонажу
     const selectedOption = document.querySelector(
       `[data-character-id="${selectedId}"]`
     );
@@ -314,30 +305,24 @@ export function initUI() {
     }
   }
 
-  // Выбор персонажа
   function selectCharacter(characterId) {
     const newPlayer = gameData.getPlayerById(characterId);
     if (newPlayer) {
-      // Сохраняем текущие победы и поражения
       const currentPlayer = gameStore.getState().player;
       if (currentPlayer) {
         newPlayer.wins = currentPlayer.wins;
         newPlayer.losses = currentPlayer.losses;
       }
 
-      // Обновляем игрока
       gameStore.updatePlayer(newPlayer);
 
-      // Обновляем отображение
       updateCharacterDisplay(newPlayer);
       updateCharacterSelection(characterId);
 
-      // Показываем сообщение об успешной смене
       showMessage(`Character changed to ${newPlayer.name}!`);
     }
   }
 
-  // Показать сообщение
   function showMessage(text) {
     const message = document.createElement("div");
     message.className = "message";
@@ -369,12 +354,10 @@ export function initUI() {
 
     if (!player) return;
 
-    // Показываем экран настроек
     const settingsScreen = document.getElementById("settings-screen");
     if (settingsScreen) {
       settingsScreen.style.display = "block";
 
-      // Обновляем поле имени
       const nameInput = document.getElementById("player-name");
       if (nameInput) nameInput.value = player.name;
     }
@@ -388,14 +371,12 @@ export function initUI() {
 
     if (!player || !enemy) return;
 
-    // Показываем экран боя
     const battleScreen = document.getElementById("battle-screen");
     const battleContent = document.getElementById("battle-content");
 
     if (battleScreen) battleScreen.style.display = "flex";
     if (battleContent) battleContent.style.display = "flex";
 
-    // Обновляем данные боя
     const characterName = document.querySelector(
       "#battle-screen .character-name"
     );
@@ -412,19 +393,15 @@ export function initUI() {
     if (characterAvatar) characterAvatar.src = player.avatar;
     if (enemyAvatar) enemyAvatar.src = enemy.avatar;
 
-    // Обновляем здоровье
     updateBattleUI();
 
-    // Рендерим логи
     renderBattleLogs();
   }
 
   // Показать экран регистрации
   function showRegistrationScreen() {
-    // Скрываем все экраны
     hideAllScreens();
 
-    // Создаем экран регистрации
     const mainContent = document.querySelector(".main");
     if (mainContent) {
       const registrationScreen = document.createElement("div");
@@ -445,7 +422,6 @@ export function initUI() {
     }
   }
 
-  // Глобальные функции для onclick
   window.startNewBattle = () => {
     gameModule.startNewFight();
     renderCurrentPhase();
@@ -472,7 +448,6 @@ export function initUI() {
     if (name) {
       gameModule.updatePlayerName(name);
       alert("Name updated!");
-      // Обновляем UI
       renderCurrentPhase();
     } else {
       alert("Please, enter your name!");

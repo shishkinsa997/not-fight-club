@@ -2,7 +2,6 @@ export function initGame() {
   let gameData = null;
   let gameStore = null;
 
-  // Инициализация игры
   function init(data, store) {
     gameData = data;
     gameStore = store;
@@ -13,7 +12,7 @@ export function initGame() {
     }
   }
 
-  // Выбор уникальных зон
+  //TODO: Добавить при атаках игрока в одни и те же зоны, блочить эти зоны
   function pickUniqueZones(zones, count) {
     const copy = [...zones];
     const result = [];
@@ -24,14 +23,12 @@ export function initGame() {
     return result;
   }
 
-  // Разрешение хода
   function resolveTurn(playerAction, enemyAction) {
     const events = [];
     const state = gameStore.getState();
     const player = state.player;
     const enemy = state.currentEnemy;
 
-    // Атака игрока
     const playerIsCrit = Math.random() < player.critChance;
     const enemyBlockedPlayer = enemyAction.defends.includes(
       playerAction.attack
@@ -98,24 +95,19 @@ export function initGame() {
       }
     });
 
-    // Ограничиваем здоровье до 0
     enemy.hp = Math.max(0, enemy.hp);
     player.hp = Math.max(0, player.hp);
 
-    // Обновляем состояние
     gameStore.updatePlayer(player);
     gameStore.updateState({ currentEnemy: enemy });
 
-    // Добавляем события в лог
     events.forEach((event) => {
       gameStore.addBattleLog(event);
     });
 
-    // Проверяем окончание боя
     if (enemy.hp === 0 || player.hp === 0) {
       finishFight();
     } else {
-      // Увеличиваем ход
       const currentFight = gameStore.getState().currentFight;
       gameStore.updateFight({ turn: currentFight.turn + 1 });
     }
@@ -142,33 +134,28 @@ export function initGame() {
     gameStore.finishFight(result);
   }
 
-  // Начать новый бой
   function startNewFight() {
     const enemy = gameData.getRandomEnemy();
     gameData.resetEnemy(enemy);
     gameStore.startNewFight(enemy);
   }
 
-  // Получить текущее состояние
   function getCurrentState() {
     return gameStore.getState();
   }
 
-  // Обновить имя игрока
   function updatePlayerName(name) {
     const state = gameStore.getState();
     const player = { ...state.player, name };
     gameStore.updatePlayer(player);
   }
 
-  // Обновить аватар игрока
   function updatePlayerAvatar(avatar) {
     const state = gameStore.getState();
     const player = { ...state.player, avatar };
     gameStore.updatePlayer(player);
   }
 
-  // Сменить фазу игры
   function setGamePhase(phase) {
     gameStore.setGamePhase(phase);
   }

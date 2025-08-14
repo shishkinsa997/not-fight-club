@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -100,7 +100,7 @@
     </header>
 
     <main class="container main">
-      <!-- Главный экран -->
+      <!-- Главный -->
       <div class="main-content" id="main-screen">
         <div class="main-screen">
           <h1>Welcome to the Happy House!</h1>
@@ -114,90 +114,158 @@
         </div>
       </div>
 
-      <!-- Экран персонажа -->
+      <!-- Персонажи -->
       <div class="main-content" id="character-screen" style="display: none">
         <div class="character-screen">
           <div class="character-info">
-            <div class="character-selection">
               <h3>Click on character to select:</h3>
-              <div class="character-grid">
-                <div class="character-option" data-character-id="krosh">
-                  <img
-                    src="assets/img/characters/krosh.png"
-                    alt="Krosh"
-                    class="character-avatar-small"
-                  />
-                  <span>Krosh</span>
+            <div class="character-selection">
+                <div class="character-grid">
+                  <div class="character-option" data-character-id="krosh">
+                    <img
+                      src="assets/img/characters/krosh.png"
+                      alt="Krosh"
+                      class="character-avatar-small"
+                    />
+                    <span>Krosh</span>
+                  </div>
+                  <div class="character-option" data-character-id="nusha">
+                    <img
+                      src="assets/img/characters/nusha.png"
+                      alt="Nusha"
+                      class="character-avatar-small"
+                    />
+                    <span>Nusha</span>
+                  </div>
+                  <div class="character-option" data-character-id="barash">
+                    <img
+                      src="assets/img/characters/barash.png"
+                      alt="Barash"
+                      class="character-avatar-small"
+                    />
+                    <span>Barash</span>
+                  </div>
+                  <div class="character-option" data-character-id="yoj">
+                    <img
+                      src="assets/img/characters/yoj.png"
+                      alt="Yoj"
+                      class="character-avatar-small"
+                    />
+                    <span>Yoj</span>
+                  </div>
+                  <div class="character-option" data-character-id="pin">
+                    <img
+                      src="assets/img/characters/pin.png"
+                      alt="Pin"
+                      class="character-avatar-small"
+                    />
+                    <span>Pin</span>
+                  </div>
+                  <div class="character-option" data-character-id="losyash">
+                    <img
+                      src="assets/img/characters/losyash.png"
+                      alt="Losyash"
+                      class="character-avatar-small"
+                    />
+                    <span>Losyash</span>
+                  </div>
+                  <div class="character-option" data-character-id="sovunya">
+                    <img
+                      src="assets/img/characters/sovunya.png"
+                      alt="Sovunya"
+                      class="character-avatar-small"
+                    />
+                    <span>Sovunya</span>
+                  </div>
+                  <div class="character-option" data-character-id="bibi">
+                    <img
+                      src="assets/img/characters/bibi.png"
+                      alt="Bibi"
+                      class="character-avatar-small"
+                    />
+                    <span>Bibi</span>
+                  </div>
                 </div>
-                <div class="character-option" data-character-id="nusha">
-                  <img
-                    src="assets/img/characters/nusha.png"
-                    alt="Nusha"
-                    class="character-avatar-small"
-                  />
-                  <span>Nusha</span>
+              <div class="selected-character">
+                <img
+                  src="assets/img/characters/krosh.png"
+                  alt="avatar"
+                  class="character-avatar-large"
+                  id="selected-character-avatar"
+                />
+                <!-- <h2 id="character-name">Player</h2> -->
+                <div class="character-stats">
+                  <div class="character-stat">
+                    <div class="stat-icon">
+                      <img src="/assets/icon/health.svg" alt="health">
+                    </div>
+                    <p>Health </p>
+                    <span id="character-hp">100</span>
+                    <div class="stat-progress-wrapper">
+                      <div id="character-hp-bar" class="stat-progress" style="width: 50%;"></div>
+                    </div>
+                  </div>
+                  <div class="character-stat">
+                    <div class="stat-icon">
+                      <img src="/assets/icon/damage.svg" alt="damage">
+                    </div>
+                    <p>Damage: </p>
+                    <span id="character-damage">10</span>
+                    <div class="stat-progress-wrapper">
+                      <div id="character-damage-bar" class="stat-progress" style="width: 50%;"></div>
+                    </div>
+                  </div>
+                  <div class="character-stat">
+                    <div class="stat-icon">
+                      <img src="/assets/icon/chance.svg" alt="dice">
+                    </div>
+                    <p>Crit chance: </p>
+                    <span><span id="character-crit">10</span>%</span>
+                    <div class="stat-progress-wrapper">
+                      <div id="character-crit-bar" class="stat-progress" style="width: 50%;"></div>
+                    </div>
+                  </div>
+                  <div class="character-stat">
+                    <div class="stat-icon">
+                      <img src="/assets/icon/crit.svg" alt="crit">
+                    </div>
+                    <p>Crit multiplier: </p>
+                    <span><span id="character-crit-mult">1.0</span>x</span>
+                    <div class="stat-progress-wrapper">
+                      <div id="character-crit-mult-bar" class="stat-progress" style="width: 50%;"></div>
+                    </div>
+                  </div>
+                  <div class="character-stat">
+                    <div class="stat-icon">
+                      <img src="/assets/icon/weapon.svg" alt="crit">
+                    </div>
+                    <p>Weapon </p>
+                    <span id="character-weapon">Gun</span>
+                  </div>
                 </div>
-                <div class="character-option" data-character-id="barash">
-                  <img
-                    src="assets/img/characters/barash.png"
-                    alt="Barash"
-                    class="character-avatar-small"
-                  />
-                  <span>Barash</span>
+                <div class="battle-record">
+                  <p>Wins <span id="character-wins">0</span></p>
+                  <p>Losses <span id="character-losses">0</span></p>
                 </div>
-                <div class="character-option" data-character-id="pin">
-                  <img
-                    src="assets/img/characters/pin.png"
-                    alt="Pin"
-                    class="character-avatar-small"
-                  />
-                  <span>Pin</span>
+                <!-- <div class="character-stats">
+                  <p>Health: <span id="character-hp">100</span></p>
+                  <p>Damage: <span id="character-damage">10</span></p>
+                  <p>Crit chance: <span id="character-crit">10.0</span>%</p>
+                  <p>
+                    Crit multiplier: <span id="character-crit-mult">1.5</span>x
+                  </p>
                 </div>
-                <div class="character-option" data-character-id="losyash">
-                  <img
-                    src="assets/img/characters/losyash.png"
-                    alt="Losyash"
-                    class="character-avatar-small"
-                  />
-                  <span>Losyash</span>
-                </div>
-                <div class="character-option" data-character-id="bibi">
-                  <img
-                    src="assets/img/characters/bibi.png"
-                    alt="Bibi"
-                    class="character-avatar-small"
-                  />
-                  <span>Bibi</span>
-                </div>
-              </div>
-            </div>
-            <div class="selected-character">
-              <h2>Selected Character:</h2>
-              <img
-                src="assets/img/characters/krosh.png"
-                alt="avatar"
-                class="character-avatar-large"
-                id="selected-character-avatar"
-              />
-              <h2 id="character-name">Player</h2>
-              <div class="character-stats">
-                <p>Health: <span id="character-hp">100</span></p>
-                <p>Damage: <span id="character-damage">10</span></p>
-                <p>Crit chance: <span id="character-crit">10.0</span>%</p>
-                <p>
-                  Crit multiplier: <span id="character-crit-mult">1.5</span>x
-                </p>
-              </div>
-              <div class="battle-record">
-                <p>Wins: <span id="character-wins">0</span></p>
-                <p>Losses: <span id="character-losses">0</span></p>
+                <div class="battle-record">
+                  <p>Wins: <span id="character-wins">0</span></p>
+                  <p>Losses: <span id="character-losses">0</span></p>
+                </div> -->
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Экран настроек -->
+      <!-- Настройки -->
       <div class="main-content" id="settings-screen" style="display: none">
         <div class="settings-screen">
           <h2>Setting</h2>
@@ -209,7 +277,7 @@
         </div>
       </div>
 
-      <!-- Экран боя -->
+      <!-- Бой -->
       <div class="main-content" id="battle-screen" style="display: none">
         <div class="character-box">
           <div class="character-name">Player</div>
@@ -227,6 +295,7 @@
             </p>
           </div>
         </div>
+
 
         <div class="table">
           <p class="battle-info">Pick 1 Attack zone and 2 Defence zones</p>
@@ -331,6 +400,7 @@
           <button class="btn-attack" onclick="window.handleAttack()">Attack!</button>
         </div>
 
+
         <div class="enemy-box">
           <div class="enemy-name">Enemy</div>
           <div class="enemy-avatar">
@@ -345,7 +415,7 @@
         </div>
       </div>
 
-      <!-- Логи боя -->
+      <!-- Логи -->
       <div class="battle-content" id="battle-content" style="display: none">
         <p class="battle-title">Battle Logs</p>
         <div class="battle-logs"></div>
