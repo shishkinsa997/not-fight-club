@@ -1,3 +1,19 @@
 :root {
   --border: 1px solid #E4E4E7;
+  --primary: #ff6262;
+  --shadow: #ff626230;
+  --hover: #fe4a4a;
+  --save: #10b981;
+  --save-hover: #059669;
+
+
+
+  --red: #DC2626;
+  --red-shade: #dc262630;
+  --blue: #266cdc;
+  --blue-shade: #266cdc30;
+  --orange: #dcd326;
+  --orange-shade: #dcd32630;
+  --green: #26dc47;
+  --green-shade: #26dc4730;
 }

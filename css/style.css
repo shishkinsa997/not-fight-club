@@ -34,7 +34,7 @@ body::after {
   left: calc(100% - 200px);
   /* width: 100vw;
   height: 100vh; */
-  background-image: url(/assets/img/mime.png);
+  background-image: url("../assets/img/mime.png");
   background-size: 70%;
   background-repeat: no-repeat;
   object-fit: contain;
@@ -117,6 +117,7 @@ main {
 .main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 24px;
   padding: 24px;
 
@@ -129,7 +130,7 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(/assets/img/bg-1.jpg);
+  background: url("../assets/img/bg-1.jpg");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -155,7 +156,7 @@ main {
 .main-content {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
 }
 
@@ -178,15 +179,30 @@ main {
 .character-avatar,
 .enemy-avatar {
   aspect-ratio: 1/1;
+  width: 302px;
+  height: 302px;
+  padding: 10px;
   border-radius: 12px;
   border: var(--border);
   border-radius: 16px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
 }
 
 .character-avatar img,
 .enemy-avatar img {
   border-radius: 12px;
   object-fit: contain;
+}
+
+.character-avatar {
+  background-image: url("../assets/img/playeer_bg.jpg");
+  background-size: 150%;
+}
+
+.enemy-avatar {
+  background-image: url("../assets/img/enemy-bg.png");
+  background-size: cover;
 }
 
 .character-health,
@@ -253,9 +269,13 @@ main {
 .btn-attack {
   padding: 10px 16px;
   height: 40px;
-  background-color: #7d7d7d;
+  background-color: var(--primary);
   color: #FAFAFA;
   border-radius: 6px;
+}
+
+.btn-attack:hover {
+  background-color: var(--hover);
 }
 
 .battle-content {
@@ -305,27 +325,27 @@ main {
 }
 
 .log-entry.player {
-  border-left: 4px solid #3b82f6;
-  background: #eff6ff;
+  border-left: 4px solid var(--blue);
+  background: var(--blue-shade );
   opacity: 0.8;
 }
 
 .log-entry.enemy {
-  border-left: 4px solid #ef4444;
-  background: #fef2f2;
+  border-left: 4px solid var(--red);
+  background: var(--red-shade);
   opacity: 0.8;
 }
 
 .log-entry.crit {
-  background: #fef3c7;
-  border-color: #f59e0b;
+  background: var(--orange-shade);
+  border-color: var(--orange);
   font-weight: 600;
   opacity: 0.8;
 }
 
 .log-entry.blocked {
-  background: #f0fdf4;
-  border-color: #22c55e;
+  background: var(--green-shade);
+  border-color: var(--green);
   opacity: 0.8;
 }
 
@@ -365,7 +385,7 @@ main {
   padding: 16px 32px;
   font-size: 18px;
   font-weight: 600;
-  background: #3b82f6;
+  background: var(--primary);
   color: white;
   border: none;
   border-radius: 8px;
@@ -374,7 +394,7 @@ main {
 }
 
 .start-battle-btn:hover {
-  background: #2563eb;
+  background: var(--hover);
 }
 
 .character-info {
@@ -421,15 +441,15 @@ main {
 }
 
 .character-option:hover {
-  border-color: #3b82f6;
-  background: #f0f9ff;
+  border-color: var(--primary);
+  background: var(--shadow);
   transform: translateY(-2px);
 }
 
 .character-option.selected {
-  border-color: #3b82f6;
-  background: #eff6ff;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  border-color: var(--primary);
+  background: var(--shadow);
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
 .character-avatar-small {
@@ -505,7 +525,7 @@ main {
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 600;
-  background: #10b981;
+  background: var(--save);
   color: white;
   border: none;
   border-radius: 8px;
@@ -514,7 +534,7 @@ main {
 }
 
 .setting-group button:hover {
-  background: #059669;
+  background: var(--save-hover);
 }
 
 .registration-screen {
@@ -550,7 +570,7 @@ main {
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 600;
-  background: #3b82f6;
+  background: var(--primary);
   color: white;
   border: none;
   border-radius: 8px;
@@ -559,7 +579,7 @@ main {
 }
 
 .registration-form button:hover {
-  background: #2563eb;
+  background: var(--hover);
 }
 
 /* Анимация для сообщений */
