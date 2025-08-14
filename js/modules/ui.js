@@ -346,7 +346,7 @@ export function initUI() {
       position: fixed;
       top: 20px;
       right: 20px;
-      background: #10b981;
+      background: var(--save);
       color: white;
       padding: 12px 24px;
       border-radius: 8px;
