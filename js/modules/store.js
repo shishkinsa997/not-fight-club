@@ -1,12 +1,11 @@
 export function initStore() {
   const STORAGE_KEY = "not-fight-club-game";
 
-  // Состояние игры
   let gameState = {
     player: null,
     currentEnemy: null,
     currentFight: null,
-    gamePhase: "main", // main, character, settings, battle
+    gamePhase: "main",
     battleLogs: [],
   };
 
@@ -31,28 +30,23 @@ export function initStore() {
     }
   }
 
-  // Инициализация
   loadState();
 
   return {
-    // Получить текущее состояние
     getState() {
       return { ...gameState };
     },
 
-    // Обновить состояние
     updateState(newState) {
       gameState = { ...gameState, ...newState };
       saveState();
     },
 
-    // Обновить игрока
     updatePlayer(player) {
       gameState.player = player;
       saveState();
     },
 
-    // Начать новый бой
     startNewFight(enemy) {
       gameState.currentEnemy = { ...enemy };
       gameState.currentFight = {
@@ -65,20 +59,19 @@ export function initStore() {
       saveState();
     },
 
-    // Обновить бой
     updateFight(fightData) {
       gameState.currentFight = { ...gameState.currentFight, ...fightData };
       saveState();
     },
 
-    // Добавить лог боя
     addBattleLog(log) {
       if (!gameState.currentFight) return;
       gameState.currentFight.logs.push(log);
       saveState();
     },
 
-    // Завершить бой
+    //TODO: Добавить сохранение побед/поражений для каждого персонажа
+
     finishFight(result) {
       if (gameState.currentFight) {
         gameState.currentFight.inProgress = false;
@@ -95,13 +88,11 @@ export function initStore() {
       saveState();
     },
 
-    // Сменить фазу игры
     setGamePhase(phase) {
       gameState.gamePhase = phase;
       saveState();
     },
 
-    // Сбросить игру
     resetGame() {
       gameState = {
         player: null,
