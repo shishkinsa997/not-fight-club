@@ -2,6 +2,8 @@ export function initUI() {
   let gameModule = null;
   let gameData = null;
   let gameStore = null;
+  let selectedRegistrationCharacterId = null;
+
 
   function init(game, data, store) {
     gameModule = game;
@@ -10,6 +12,10 @@ export function initUI() {
 
     setupEventListeners();
     renderCurrentPhase();
+    // По умолчанию выбран крош
+    if (gameData && gameData.player && gameData.player.id) {
+      selectedRegistrationCharacterId = gameData.player.id;
+    }
   }
 
   function setupEventListeners() {
@@ -34,6 +40,18 @@ export function initUI() {
         }
       }
     });
+
+    // Выбор персонажа регистрация
+    document.addEventListener("click", (e) => {
+      const regOption = e.target.closest(".character-option-reg");
+      if (regOption) {
+        const characterId = regOption.getAttribute("data-character-id");
+        if (characterId) {
+          selectedRegistrationCharacterId = characterId;
+          updateRegistrationSelection(characterId);
+        }
+      }
+    });
   }
 
   // Обработка атаки
@@ -50,13 +68,22 @@ export function initUI() {
       return;
     }
 
+
+
     const playerAction = {
       attack: attackZone.value,
       defends: Array.from(defenceZones).map((input) => input.value),
     };
 
+    //TODO: Дизейблить атаку при начале боя
     const state = gameStore.getState();
     const enemy = state.currentEnemy;
+
+    const attackBtn = document.querySelector(".btn-attack");
+
+    if (state.currentEnemy.hp === 0 || state.player.hp === 0) {
+      if (attackBtn) attackBtn.disabled = true;
+    }
 
     const enemyAction = {
       attacks: gameModule.pickUniqueZones(gameData.ZONES, enemy.attackCount),
@@ -68,19 +95,49 @@ export function initUI() {
     updateBattleUI();
     renderBattleLogs();
 
+    const overlay = document.querySelector(".win-message-overlay");
+    const msg = document.getElementById("win-message");
+    const msgButton = document.getElementById("win-message-button");
+
     // Проверяем окончание боя
     if (state.currentEnemy.hp === 0 || state.player.hp === 0) {
+      if (attackBtn) attackBtn.disabled = true;
       setTimeout(() => {
         const result = state.currentFight?.result;
         if (result) {
-          alert(result.message);
-          gameModule.setGamePhase("main");
-          renderCurrentPhase();
+          window.showWinMessage = function (message, btn) {
+            if (overlay && msg && msgButton) {
+              msg.textContent = message;
+              msgButton.textContent = btn;
+              overlay.style.display = "flex";
+            }
+            // Кнопка закрытия и Thanks
+            const closeBtn = overlay.querySelector(".win-message-close");
+            // const thanksBtn = overlay.querySelector('#win-message-thanks');
+            function hide() {
+              overlay.style.display = "none";
+              gameModule.setGamePhase("main");
+              renderCurrentPhase();
+            }
+            if (closeBtn) closeBtn.onclick = hide;
+            msgButton.onclick = hide;
+            if (attackBtn) attackBtn.disabled = false;
+
+            // if (thanksBtn) thanksBtn.onclick = hide;
+          };
+
+          // alert(result.message);
+          // gameModule.setGamePhase("main");
+          // renderCurrentPhase();
+            if (window.showWinMessage) window.showWinMessage(result.message, result.btn);
+
         }
       }, 1000);
     }
-
   }
+
+
+
 
   // Обновление UI боя
   function updateBattleUI() {
@@ -209,9 +266,8 @@ export function initUI() {
     if (battleContent) battleContent.style.display = "none";
 
     const registrationScreen = document.getElementById("registration-screen");
-    if (registrationScreen) {
-      registrationScreen.remove();
-    }
+    if (registrationScreen)
+      registrationScreen.style.display = "none";
   }
 
   // Рендер главного экрана
@@ -234,6 +290,7 @@ export function initUI() {
       if (lossesElement) lossesElement.textContent = player.losses;
 
       const titleElement = mainScreen.querySelector("h1");
+
       if (titleElement)
         titleElement.textContent = `Welcome, ${player.name}!`;
     }
@@ -275,21 +332,28 @@ export function initUI() {
     const critElementBar = document.getElementById("character-crit-bar");
     const critMultElementBar = document.getElementById("character-crit-mult-bar");
 
+    const stats = gameStore.getState().characterStats[player.id];
+    // const char = stats.player;
+
     if (nameElement) nameElement.textContent = player.name;
     if (hpElement) hpElement.textContent = player.hpMax;
     if (damageElement) damageElement.textContent = player.damage;
     if (critElement)
       critElement.textContent = (player.critChance * 100).toFixed(1);
     if (critMultElement) critMultElement.textContent = player.critMultiplier;
-    if (winsElement) winsElement.textContent = player.wins;
-    if (lossesElement) lossesElement.textContent = player.losses;
+    if (winsElement) winsElement.textContent = stats?.wins ?? 0;
+    if (lossesElement) lossesElement.textContent = stats?.losses ?? 0;
     if (avatarElement) avatarElement.src = player.avatar;
     if (weaponElement) weaponElement.textContent = player.weapon;
 
-    if (hpElementBar) hpElementBar.style.width = (player.hpMax * 100 / 150) + "%";
-    if (damageElementBar) damageElementBar.style.width = (player.damage * 100 / 30) + "%";
-    if (critElementBar) critElementBar.style.width = player.critChance * 10000 / 30 + "%";
-    if (critMultElementBar) critMultElementBar.style.width = (player.critMultiplier * 100 / 3) + "%";
+    if (hpElementBar)
+      hpElementBar.style.width = (player.hpMax * 100) / 150 + "%";
+    if (damageElementBar)
+      damageElementBar.style.width = (player.damage * 100) / 30 + "%";
+    if (critElementBar)
+      critElementBar.style.width = (player.critChance * 10000) / 30 + "%";
+    if (critMultElementBar)
+      critMultElementBar.style.width = (player.critMultiplier * 100) / 3 + "%";
   }
 
   function updateCharacterSelection(selectedId) {
@@ -299,6 +363,20 @@ export function initUI() {
 
     const selectedOption = document.querySelector(
       `[data-character-id="${selectedId}"]`
+    );
+    if (selectedOption) {
+      selectedOption.classList.add("selected");
+    }
+  }
+
+  //Обновляем выбор
+  function updateRegistrationSelection(selectedId) {
+    document.querySelectorAll(".character-option-reg").forEach((option) => {
+      option.classList.remove("selected");
+    });
+
+    const selectedOption = document.querySelector(
+      `.character-option-reg[data-character-id="${selectedId}"]`
     );
     if (selectedOption) {
       selectedOption.classList.add("selected");
@@ -402,25 +480,23 @@ export function initUI() {
   function showRegistrationScreen() {
     hideAllScreens();
 
-    const mainContent = document.querySelector(".main");
-    if (mainContent) {
-      const registrationScreen = document.createElement("div");
-      registrationScreen.className = "main-content";
-      registrationScreen.id = "registration-screen";
-      registrationScreen.innerHTML = `
-        <div class="registration-screen">
-          <h1>Welcome to the Happy House</h1>
-          <div class="registration-form">
-            <label for="player-name-input">Enter you name:</label>
-            <input type="text" id="player-name-input" placeholder="Name">
-            <button onclick="window.createPlayer()">Create character</button>
-          </div>
-        </div>
-      `;
+    // const mainContent = document.querySelector(".main");
+    const registrationScreen = document.getElementById("registration-screen");
+    if (registrationScreen) {
+      registrationScreen.style.display = "flex";
 
-      mainContent.appendChild(registrationScreen);
+      //УБРАТЬ?
+      // Подсветка персонажа при регистрации
+      // if (!selectedRegistrationCharacterId && gameData && gameData.player) {
+      //   selectedRegistrationCharacterId = gameData.player.id;
+      // }
+      // updateRegistrationSelection(selectedRegistrationCharacterId);
+
+      // mainContent.appendChild(registrationScreen);
     }
   }
+
+  window.showRegistrationScreen = showRegistrationScreen;
 
   window.startNewBattle = () => {
     gameModule.startNewFight();
@@ -431,8 +507,22 @@ export function initUI() {
     const nameInput = document.getElementById("player-name-input");
     const name = nameInput.value.trim();
 
+    //TODO: Добавить ресет профиля
+
+    // Теперь сохраняет выбранного персонажа с именем
     if (name) {
-      const player = { ...gameData.player, name };
+      const chosenId =
+        selectedRegistrationCharacterId ||
+        (gameData && gameData.player && gameData.player.id);
+      const base =
+        (chosenId && gameData.getPlayerById(chosenId)) || gameData.player;
+      const player = {
+        ...base,
+        name,
+        wins: 0,
+        losses: 0,
+        hp: base.hpMax,
+      };
       gameStore.updatePlayer(player);
       gameModule.setGamePhase("main");
       renderCurrentPhase();

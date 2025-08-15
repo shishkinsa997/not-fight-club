@@ -7,6 +7,7 @@ export function initStore() {
     currentFight: null,
     gamePhase: "main",
     battleLogs: [],
+    characterStats: {},
   };
 
   // Загрузка состояния из localStorage
@@ -78,10 +79,22 @@ export function initStore() {
         gameState.currentFight.result = result;
 
         if (gameState.player) {
+          // Глобальная статистика игрока
           if (result.winner === "player") {
             gameState.player.wins++;
           } else {
             gameState.player.losses++;
+          }
+
+          // Статистика по персонажу
+          const id = gameState.player.id;
+          if (!gameState.characterStats[id]) {
+            gameState.characterStats[id] = { wins: 0, losses: 0 };
+          }
+          if (result.winner === "player") {
+            gameState.characterStats[id].wins++;
+          } else {
+            gameState.characterStats[id].losses++;
           }
         }
       }
@@ -100,6 +113,7 @@ export function initStore() {
         currentFight: null,
         gamePhase: "main",
         battleLogs: [],
+        characterStats: {},
       };
       localStorage.removeItem(STORAGE_KEY);
     },

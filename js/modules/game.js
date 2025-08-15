@@ -6,10 +6,9 @@ export function initGame() {
     gameData = data;
     gameStore = store;
 
-    // Если нет игрока, создаем нового
-    if (!gameStore.getState().player) {
-      gameStore.updatePlayer({ ...gameData.player });
-    }
+    // if (!gameStore.getState().player) {
+    //   gameStore.updatePlayer({ ...gameData.player });
+    // }
   }
 
   //TODO: Добавить при атаках игрока в одни и те же зоны, блочить эти зоны
@@ -99,7 +98,7 @@ export function initGame() {
     player.hp = Math.max(0, player.hp);
 
     gameStore.updatePlayer(player);
-    gameStore.updateState({ currentEnemy: enemy });
+    gameStore.updateState(enemy);
 
     events.forEach((event) => {
       gameStore.addBattleLog(event);
@@ -121,17 +120,30 @@ export function initGame() {
     const player = state.player;
     const enemy = state.currentEnemy;
 
+    // FIX: Исправить появление окна с ничьей
     let result;
     if (enemy.hp === 0) {
-      result = { winner: "player", message: "YOU WIN! this time" };
+      result = {
+        winner: "player",
+        message: "YOU WIN! this time",
+        btn: "Easy",
+      };
+    } else if (enemy.hp === 0 && player.hp === 0) {
+      result = {
+        winner: "draw",
+        message: "DRAW!",
+        btn: "Next fight",
+      };
     } else {
       result = {
         winner: "enemy",
         message: "YOU DIED!",
+        btn: "Oh, no",
       };
     }
 
     gameStore.finishFight(result);
+
   }
 
   function startNewFight() {
