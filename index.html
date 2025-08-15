@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/root.css" />
-    <link rel="stylesheet" href="./css/media.css" />
+    <!-- <link rel="stylesheet" href="./css/media.css" /> -->
     <link rel="icon" href="./assets/favicon.ico" />
     <title>Happy House</title>
   </head>
@@ -18,21 +18,9 @@
           <li>
             <a href="#" data-phase="main">
               <div class="icon">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 14.6667V8H10V14.6667M2 6L8 1.33333L14 6V13.3333C14 13.687 13.8595 14.0261 13.6095 14.2761C13.3594 14.5262 13.0203 14.6667 12.6667 14.6667H3.33333C2.97971 14.6667 2.64057 14.0261 2.39052 14.2761C2.14048 14.0261 2 13.687 2 13.3333V6Z"
-                    stroke="#18181B"
-                    stroke-width="1.33"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+<svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 14.6667V8H9V14.6667M1 6L7 1.33333L13 6V13.3333C13 13.687 12.8595 14.0261 12.6095 14.2761C12.3594 14.5262 12.0203 14.6667 11.6667 14.6667H2.33333C1.97971 14.6667 1.64057 14.5262 1.39052 14.2761C1.14048 14.0261 1 13.687 1 13.3333V6Z" stroke="#18181B" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
               </div>
               Main
             </a>
@@ -274,7 +262,7 @@
                 <div class="character-stats">
                   <div class="character-stat">
                     <div class="stat-icon">
-                      <img src="../assets/icon/health.svg" alt="health">
+                      <img src="./assets/icon/health.svg" alt="health">
                     </div>
                     <p>Health </p>
                     <span id="character-hp">100</span>
@@ -284,7 +272,7 @@
                   </div>
                   <div class="character-stat">
                     <div class="stat-icon">
-                      <img src="../assets/icon/damage.svg" alt="damage">
+                      <img src="./assets/icon/damage.svg" alt="damage">
                     </div>
                     <p>Damage </p>
                     <span id="character-damage">10</span>
@@ -294,7 +282,7 @@
                   </div>
                   <div class="character-stat">
                     <div class="stat-icon">
-                      <img src="../assets/icon/chance.svg" alt="dice">
+                      <img src="./assets/icon/chance.svg" alt="dice">
                     </div>
                     <p>Crit chance </p>
                     <span><span id="character-crit">10</span>%</span>
@@ -304,7 +292,7 @@
                   </div>
                   <div class="character-stat">
                     <div class="stat-icon">
-                      <img src="../assets/icon/crit.svg" alt="crit">
+                      <img src="./assets/icon/crit.svg" alt="crit">
                     </div>
                     <p>Crit multiplier </p>
                     <span><span id="character-crit-mult">1.0</span>x</span>
@@ -314,7 +302,7 @@
                   </div>
                   <div class="character-stat">
                     <div class="stat-icon">
-                      <img src="../assets/icon/weapon.svg" alt="crit">
+                      <img src="./assets/icon/weapon.svg" alt="weapon">
                     </div>
                     <p>Weapon </p>
                     <span id="character-weapon">Gun</span>
@@ -350,6 +338,12 @@
             <label for="player-name">Player name:</label>
             <input type="text" id="player-name" value="player" />
             <button onclick="window.updatePlayerName()">Save</button>
+            <ul id="switcher">
+              <li id="lightButton"></li>
+              <li id="grayButton"></li>
+              <li id="darkButton"></li>
+              <li id="blackButton"></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -509,6 +503,7 @@
           <div id="win-message">YOU DIED!</div>
           <button id="win-message-button">Thanks</button>
         </div>
+        <div class="blur"></div>
       </div>
     </main>
 
