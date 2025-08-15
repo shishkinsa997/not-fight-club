@@ -100,6 +100,83 @@
     </header>
 
     <main class="container main">
+
+      <!-- Регистрация -->
+      <div class="main-contant" id="registration-screen" style="display: none;">
+        <h1>Welcome to the Happy House</h1>
+        <div class="registration-form">
+          <label for="player-name-input">Create your hero</label>
+          <input type="text" id="player-name-input" placeholder="Name">
+          <div class="character-grid-reg">
+            <div class="character-option-reg" data-character-id="krosh">
+              <img
+                src="assets/img/characters/krosh.png"
+                alt="Krosh"
+                class="character-avatar-reg"
+              />
+              <span>Krosh</span>
+            </div>
+            <div class="character-option-reg" data-character-id="nusha">
+              <img
+                src="assets/img/characters/nusha.png"
+                alt="Nusha"
+                class="character-avatar-reg"
+              />
+              <span>Nusha</span>
+            </div>
+            <div class="character-option-reg" data-character-id="barash">
+              <img
+                src="assets/img/characters/barash.png"
+                alt="Barash"
+                class="character-avatar-reg"
+              />
+              <span>Barash</span>
+            </div>
+            <div class="character-option-reg" data-character-id="yoj">
+              <img
+                src="assets/img/characters/yoj.png"
+                alt="Yoj"
+                class="character-avatar-reg"
+              />
+              <span>Yoj</span>
+            </div>
+            <div class="character-option-reg" data-character-id="pin">
+              <img
+                src="assets/img/characters/pin.png"
+                alt="Pin"
+                class="character-avatar-reg"
+              />
+              <span>Pin</span>
+            </div>
+            <div class="character-option-reg" data-character-id="losyash">
+              <img
+                src="assets/img/characters/losyash.png"
+                alt="Losyash"
+                class="character-avatar-reg"
+              />
+              <span>Losyash</span>
+            </div>
+            <div class="character-option-reg" data-character-id="sovunya">
+              <img
+                src="assets/img/characters/sovunya.png"
+                alt="Sovunya"
+                class="character-avatar-reg"
+              />
+              <span>Sovunya</span>
+            </div>
+            <div class="character-option-reg" data-character-id="bibi">
+              <img
+                src="assets/img/characters/bibi.png"
+                alt="Bibi"
+                class="character-avatar-reg"
+              />
+              <span>Bibi</span>
+            </div>
+          </div>
+      <button onclick="window.createPlayer()" class="btn-create">Create character</button>
+        </div>
+      </div>
+
       <!-- Главный -->
       <div class="main-content" id="main-screen">
         <div class="main-screen">
@@ -118,77 +195,77 @@
       <div class="main-content" id="character-screen" style="display: none">
         <div class="character-screen">
           <div class="character-info">
-              <h3>Click on character to select:</h3>
+            <h3>Click on character to select:</h3>
             <div class="character-selection">
-                <div class="character-grid">
-                  <div class="character-option" data-character-id="krosh">
-                    <img
-                      src="assets/img/characters/krosh.png"
-                      alt="Krosh"
-                      class="character-avatar-small"
-                    />
-                    <span>Krosh</span>
-                  </div>
-                  <div class="character-option" data-character-id="nusha">
-                    <img
-                      src="assets/img/characters/nusha.png"
-                      alt="Nusha"
-                      class="character-avatar-small"
-                    />
-                    <span>Nusha</span>
-                  </div>
-                  <div class="character-option" data-character-id="barash">
-                    <img
-                      src="assets/img/characters/barash.png"
-                      alt="Barash"
-                      class="character-avatar-small"
-                    />
-                    <span>Barash</span>
-                  </div>
-                  <div class="character-option" data-character-id="yoj">
-                    <img
-                      src="assets/img/characters/yoj.png"
-                      alt="Yoj"
-                      class="character-avatar-small"
-                    />
-                    <span>Yoj</span>
-                  </div>
-                  <div class="character-option" data-character-id="pin">
-                    <img
-                      src="assets/img/characters/pin.png"
-                      alt="Pin"
-                      class="character-avatar-small"
-                    />
-                    <span>Pin</span>
-                  </div>
-                  <div class="character-option" data-character-id="losyash">
-                    <img
-                      src="assets/img/characters/losyash.png"
-                      alt="Losyash"
-                      class="character-avatar-small"
-                    />
-                    <span>Losyash</span>
-                  </div>
-                  <div class="character-option" data-character-id="sovunya">
-                    <img
-                      src="assets/img/characters/sovunya.png"
-                      alt="Sovunya"
-                      class="character-avatar-small"
-                    />
-                    <span>Sovunya</span>
-                  </div>
-                  <div class="character-option" data-character-id="bibi">
-                    <img
-                      src="assets/img/characters/bibi.png"
-                      alt="Bibi"
-                      class="character-avatar-small"
-                    />
-                    <span>Bibi</span>
-                  </div>
+              <div class="character-grid">
+                <div class="character-option" data-character-id="krosh">
+                  <img
+                    src="assets/img/characters/krosh.png"
+                    alt="Krosh"
+                    class="character-avatar-small"
+                  />
+                  <span>Krosh</span>
                 </div>
+                <div class="character-option" data-character-id="nusha">
+                  <img
+                    src="assets/img/characters/nusha.png"
+                    alt="Nusha"
+                    class="character-avatar-small"
+                  />
+                  <span>Nusha</span>
+                </div>
+                <div class="character-option" data-character-id="barash">
+                  <img
+                    src="assets/img/characters/barash.png"
+                    alt="Barash"
+                    class="character-avatar-small"
+                  />
+                  <span>Barash</span>
+                </div>
+                <div class="character-option" data-character-id="yoj">
+                  <img
+                    src="assets/img/characters/yoj.png"
+                    alt="Yoj"
+                    class="character-avatar-small"
+                  />
+                  <span>Yoj</span>
+                </div>
+                <div class="character-option" data-character-id="pin">
+                  <img
+                    src="assets/img/characters/pin.png"
+                    alt="Pin"
+                    class="character-avatar-small"
+                  />
+                  <span>Pin</span>
+                </div>
+                <div class="character-option" data-character-id="losyash">
+                  <img
+                    src="assets/img/characters/losyash.png"
+                    alt="Losyash"
+                    class="character-avatar-small"
+                  />
+                  <span>Losyash</span>
+                </div>
+                <div class="character-option" data-character-id="sovunya">
+                  <img
+                    src="assets/img/characters/sovunya.png"
+                    alt="Sovunya"
+                    class="character-avatar-small"
+                  />
+                  <span>Sovunya</span>
+                </div>
+                <div class="character-option" data-character-id="bibi">
+                  <img
+                    src="assets/img/characters/bibi.png"
+                    alt="Bibi"
+                    class="character-avatar-small"
+                  />
+                  <span>Bibi</span>
+                </div>
+              </div>
               <div class="selected-character">
                 <img
-                  src="assets/img/characters/krosh.png"
+                  src="../assets/img/characters/krosh.png"
                   alt="avatar"
                   class="character-avatar-large"
                   id="selected-character-avatar"
@@ -197,7 +274,7 @@
                 <div class="character-stats">
                   <div class="character-stat">
                     <div class="stat-icon">
-                      <img src="/assets/icon/health.svg" alt="health">
+                      <img src="../assets/icon/health.svg" alt="health">
                     </div>
                     <p>Health </p>
                     <span id="character-hp">100</span>
@@ -207,9 +284,9 @@
                   </div>
                   <div class="character-stat">
                     <div class="stat-icon">
-                      <img src="/assets/icon/damage.svg" alt="damage">
+                      <img src="../assets/icon/damage.svg" alt="damage">
                     </div>
-                    <p>Damage: </p>
+                    <p>Damage </p>
                     <span id="character-damage">10</span>
                     <div class="stat-progress-wrapper">
                       <div id="character-damage-bar" class="stat-progress" style="width: 50%;"></div>
@@ -217,9 +294,9 @@
                   </div>
                   <div class="character-stat">
                     <div class="stat-icon">
-                      <img src="/assets/icon/chance.svg" alt="dice">
+                      <img src="../assets/icon/chance.svg" alt="dice">
                     </div>
-                    <p>Crit chance: </p>
+                    <p>Crit chance </p>
                     <span><span id="character-crit">10</span>%</span>
                     <div class="stat-progress-wrapper">
                       <div id="character-crit-bar" class="stat-progress" style="width: 50%;"></div>
@@ -227,9 +304,9 @@
                   </div>
                   <div class="character-stat">
                     <div class="stat-icon">
-                      <img src="/assets/icon/crit.svg" alt="crit">
+                      <img src="../assets/icon/crit.svg" alt="crit">
                     </div>
-                    <p>Crit multiplier: </p>
+                    <p>Crit multiplier </p>
                     <span><span id="character-crit-mult">1.0</span>x</span>
                     <div class="stat-progress-wrapper">
                       <div id="character-crit-mult-bar" class="stat-progress" style="width: 50%;"></div>
@@ -237,7 +314,7 @@
                   </div>
                   <div class="character-stat">
                     <div class="stat-icon">
-                      <img src="/assets/icon/weapon.svg" alt="crit">
+                      <img src="../assets/icon/weapon.svg" alt="crit">
                     </div>
                     <p>Weapon </p>
                     <span id="character-weapon">Gun</span>
@@ -419,6 +496,19 @@
       <div class="battle-content" id="battle-content" style="display: none">
         <p class="battle-title">Battle Logs</p>
         <div class="battle-logs"></div>
+      </div>
+
+      <div class="win-message-overlay" style="display: none;">
+        <div class="win-message-wrapper">
+          <div class="win-message-close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.7">
+            <path d="M12 4L4 12M4 4L12 12" stroke="#18181B" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            </svg>
+            </div>
+          <div id="win-message">YOU DIED!</div>
+          <button id="win-message-button">Thanks</button>
+        </div>
       </div>
     </main>
 

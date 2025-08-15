@@ -1,5 +1,5 @@
 :root {
-  --border: 2px solid #E4E4E7;
+  --border: 2px solid #e4e4e7;
   --primary: #ff6262;
   --secondary: #9462ff;
   --shadow: #ff626230;
@@ -8,9 +8,11 @@
   --save-hover: #059669;
   --grey: #f9fafb;
 
+  --text-primary: #18181b;
+  --text-secondary: #71717a;
+  --primary-light: #fef2f2;
 
-
-  --red: #DC2626;
+  --red: #dc2626;
   --red-shade: #dc262630;
   --blue: #266cdc;
   --blue-shade: #266cdc30;
