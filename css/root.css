@@ -1,16 +1,21 @@
 :root {
-  --border: 2px solid #e4e4e7;
-  --primary: #ff6262;
+  --border-color: #e4e4e7;
+  --border: 2px solid var(--border-color);
+  --btn-primary: #ff62a3e0;
   --secondary: #9462ff;
-  --shadow: #ff626230;
-  --hover: #fe4a4a;
+  --shadow: #ff62a33c;
+  --hover: #ff4492;
   --save: #10b981;
   --save-hover: #059669;
-  --grey: #f9fafb;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+
+  --progress: #b0b0b0;
 
   --text-primary: #18181b;
   --text-secondary: #71717a;
-  --primary-light: #fef2f2;
+  --text-reverse: #fef2f2;
 
   --red: #dc2626;
   --red-shade: #dc262630;
@@ -20,4 +25,6 @@
   --orange-shade: #dcd32630;
   --green: #26dc47;
   --green-shade: #26dc4730;
+
+  --invert: 0;
 }
