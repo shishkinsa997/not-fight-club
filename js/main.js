@@ -11,4 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   gameModule.init(gameData, gameStore);
   uiModule.init(gameModule, gameData, gameStore);
+    window.gameStore = gameStore;
+});
+
+document.getElementById("btn-reset").addEventListener("click", () => {
+  if (window.gameStore) {
+    window.gameStore.resetGame();
+    // Можно добавить перезагрузку страницы для полного сброса
+    location.reload();
+  }
 });
