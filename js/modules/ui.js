@@ -447,79 +447,109 @@ function updateCharacterSelection(selectedId) {
 
   // Смена темы
 
-  const root = document.documentElement;
+  const filterTabs = document.querySelector(".switcher-tabs");
+  const filterButtons = document.querySelectorAll(".switcher-button");
 
-  function changeRootVariable(name, value) {
-    document.documentElement.style.setProperty(name, value);
-  }
-  document.getElementById('lightButton').onclick = switchLight;
-  document.getElementById('grayButton').onclick = switchGray;
-  document.getElementById('darkButton').onclick = switchDark;
-  document.getElementById('blackButton').onclick = switchBlack;
+  filterTabs.addEventListener("click", (event) => {
+    const root = document.documentElement;
+    const targetTranslateValue = event.target.dataset.translateValue;
 
-  function switchLight() {
-    changeRootVariable('--border-color', '#e4e4e7');
-    changeRootVariable('--btn-primary', '#ff62a3e0');
-    changeRootVariable('--secondary', '#9462ff');
-    changeRootVariable('--shadow', '#ff62a33c');
-    changeRootVariable('--hover', '#ff4492');
-    changeRootVariable('--bg-primary', '#ffffff');
-    changeRootVariable('--bg-secondary', '#f9fafb');
-    changeRootVariable('--text-primary', '#18181b');
-    changeRootVariable('--text-secondary', '#71717a');
-    changeRootVariable('--text-reverse', '#fef2f2');
-    changeRootVariable('--save', '#10b981');
-    changeRootVariable('--save-hover', '#059669');
-    changeRootVariable('--invert', '0');
-  }
+    if (event.target.classList.contains("switcher-button")) {
+      root.style.setProperty("--translate-filters-slider", targetTranslateValue);
+      handleActiveTab(filterButtons, event, "switcher-active");
+    }
+  });
+  const handleActiveTab = (tabs, event, className) => {
+    // console.log(event.target.id);
+    if (event.target.id === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else if (event.target.id === "black") {
+      document.documentElement.setAttribute("data-theme", "black");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+    tabs.forEach((tab) => {
+      tab.classList.remove(className);
+    });
 
-  function switchGray() {
-    changeRootVariable('--border-color', '#e2e8f0');
-    changeRootVariable('--btn-primary', '#64748b');
-    changeRootVariable('--secondary', '#94a3b8');
-    changeRootVariable('--shadow', '#64748b39');
-    changeRootVariable('--hover', '#475569');
-    changeRootVariable('--bg-primary', '#f8fafc');
-    changeRootVariable('--bg-secondary', '#f1f5f9');
-    changeRootVariable('--text-primary', '#1e293b');
-    changeRootVariable('--text-secondary', '#64748b');
-    changeRootVariable('--text-reverse', '#f8fafc');
-    changeRootVariable('--save', '#64748b');
-    changeRootVariable('--save-hover', '#475569');
-    changeRootVariable('--invert', '0');
-  }
+    if (!event.target.classList.contains(className)) {
+      event.target.classList.add(className);
+    }
+  };
 
-  function switchDark() {
-    changeRootVariable('--border-color', '#556075ff');
-    changeRootVariable('--btn-primary', '#ff6262ff');
-    changeRootVariable('--secondary', '#9333ea');
-    changeRootVariable('--shadow', '#ff626240');
-    changeRootVariable('--hover', '#ff3f3fff');
-    changeRootVariable('--bg-primary', '#323b4aff');
-    changeRootVariable('--bg-secondary', '#3c4658ff');
-    changeRootVariable('--text-primary', '#ffffffff');
-    changeRootVariable('--text-secondary', '#d7d7d7ff');
-    changeRootVariable('--text-reverse', '#313131ff');
-    changeRootVariable('--save', '#10b981');
-    changeRootVariable('--save-hover', '#059669');
-    changeRootVariable('--invert', '1');
-  }
 
-  function switchBlack() {
-    changeRootVariable('--border-color', '#404040ff');
-    changeRootVariable('--btn-primary', '#9333ea');
-    changeRootVariable('--secondary', '#ff6262ff');
-    changeRootVariable('--shadow', '#9333ea40');
-    changeRootVariable('--hover', '#6d28d9');
-    changeRootVariable('--bg-primary', '#222222ff');
-    changeRootVariable('--bg-secondary', '#353535ff');
-    changeRootVariable('--text-primary', '#e5e5e5');
-    changeRootVariable('--text-secondary', '#a3a3a3');
-    changeRootVariable('--text-reverse', '#ffffff');
-    changeRootVariable('--save', '#10b981');
-    changeRootVariable('--save-hover', '#059669');
-    changeRootVariable('--invert', '1');
-  }
+
+  // function changeRootVariable(name, value) {
+  //   document.documentElement.style.setProperty(name, value);
+  // }
+  // document.getElementById('lightButton').onclick = switchLight;
+  // document.getElementById('grayButton').onclick = switchGray;
+  // document.getElementById('darkButton').onclick = switchDark;
+  // document.getElementById('blackButton').onclick = switchBlack;
+
+  // function switchLight() {
+  //   changeRootVariable('--border-color', '#e4e4e7');
+  //   changeRootVariable('--btn-primary', '#ff62a3e0');
+  //   changeRootVariable('--secondary', '#9462ff');
+  //   changeRootVariable('--shadow', '#ff62a33c');
+  //   changeRootVariable('--hover', '#ff4492');
+  //   changeRootVariable('--bg-primary', '#ffffff');
+  //   changeRootVariable('--bg-secondary', '#f9fafb');
+  //   changeRootVariable('--text-primary', '#18181b');
+  //   changeRootVariable('--text-secondary', '#71717a');
+  //   changeRootVariable('--text-reverse', '#fef2f2');
+  //   changeRootVariable('--save', '#10b981');
+  //   changeRootVariable('--save-hover', '#059669');
+  //   changeRootVariable('--invert', '0');
+  // }
+
+  // function switchGray() {
+  //   changeRootVariable('--border-color', '#e2e8f0');
+  //   changeRootVariable('--btn-primary', '#64748b');
+  //   changeRootVariable('--secondary', '#94a3b8');
+  //   changeRootVariable('--shadow', '#64748b39');
+  //   changeRootVariable('--hover', '#475569');
+  //   changeRootVariable('--bg-primary', '#f8fafc');
+  //   changeRootVariable('--bg-secondary', '#f1f5f9');
+  //   changeRootVariable('--text-primary', '#1e293b');
+  //   changeRootVariable('--text-secondary', '#64748b');
+  //   changeRootVariable('--text-reverse', '#f8fafc');
+  //   changeRootVariable('--save', '#64748b');
+  //   changeRootVariable('--save-hover', '#475569');
+  //   changeRootVariable('--invert', '0');
+  // }
+
+  // function switchDark() {
+  //   changeRootVariable('--border-color', '#556075ff');
+  //   changeRootVariable('--btn-primary', '#ff6262ff');
+  //   changeRootVariable('--secondary', '#9333ea');
+  //   changeRootVariable('--shadow', '#ff626240');
+  //   changeRootVariable('--hover', '#ff3f3fff');
+  //   changeRootVariable('--bg-primary', '#323b4aff');
+  //   changeRootVariable('--bg-secondary', '#3c4658ff');
+  //   changeRootVariable('--text-primary', '#ffffffff');
+  //   changeRootVariable('--text-secondary', '#d7d7d7ff');
+  //   changeRootVariable('--text-reverse', '#313131ff');
+  //   changeRootVariable('--save', '#10b981');
+  //   changeRootVariable('--save-hover', '#059669');
+  //   changeRootVariable('--invert', '1');
+  // }
+
+  // function switchBlack() {
+  //   changeRootVariable('--border-color', '#404040ff');
+  //   changeRootVariable('--btn-primary', '#9333ea');
+  //   changeRootVariable('--secondary', '#ff6262ff');
+  //   changeRootVariable('--shadow', '#9333ea40');
+  //   changeRootVariable('--hover', '#6d28d9');
+  //   changeRootVariable('--bg-primary', '#222222ff');
+  //   changeRootVariable('--bg-secondary', '#353535ff');
+  //   changeRootVariable('--text-primary', '#e5e5e5');
+  //   changeRootVariable('--text-secondary', '#a3a3a3');
+  //   changeRootVariable('--text-reverse', '#ffffff');
+  //   changeRootVariable('--save', '#10b981');
+  //   changeRootVariable('--save-hover', '#059669');
+  //   changeRootVariable('--invert', '1');
+  // }
 
 
   // Рендер экрана боя
