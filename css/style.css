@@ -405,8 +405,8 @@ progress::-moz-progress-bar {
 .log-entry.crit {
   background: var(--orange-shade);
   border-color: var(--orange);
-  font-weight: 600;
-  opacity: 0.8;
+  /* font-weight: 600; */
+  /* opacity: 0.8; */
 }
 
 .log-entry.blocked {
@@ -415,7 +415,50 @@ progress::-moz-progress-bar {
   opacity: 0.8;
 }
 
+.who, .target {
+  font-weight: 600;
+  text-shadow: 0 0 5px var(--btn-primary), 0 0 10px var(--btn-primary);
+  }
 
+.zone {
+  background: var();
+  border: 1px solid var(--text-secondary);
+  padding: 4px 4px;
+  border-radius: 6px;
+}
+
+.crits svg {
+  width: 20px;
+  height: 20px;
+  top: -2px;
+  margin-left: 2px;
+  position: absolute;
+}
+
+.crits svg path {
+  fill: var(--red);
+}
+
+.crits {
+  position: relative;
+  color: var(--red);
+  font-weight: bold;
+  display: inline-block;
+  animation: crit-glow-scale 0.6s ease forwards;
+  margin-left: 5px;
+}
+
+@keyframes crit-glow-scale {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 
 
@@ -1051,4 +1094,52 @@ box-shadow: var(--text-secondary) 0px 0px 12px;}
   flex-direction: column;
   gap: 10px;
   /* margin-left: 20px; */
+}
+
+
+
+
+
+@media screen and (max-width: 1100px) {
+  .battle-info, .picker-box p {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .character-avatar, .enemy-avatar {
+    width: calc(25vw);;
+    height: calc(25vw);;
+  }
+
+  .character-health-bar, .enemy-health-bar {
+    width: calc(25vw);;
+  }
+
+  .selected-character {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 540px) {
+    .character-avatar, .enemy-avatar {
+      display: none;
+  }
+
+  .character-health, .enemy-health {
+    position: relative;
+  }
+
+  .character-health-bar, .enemy-health-bar {
+width: 150px;
+  }
+
+  progress {
+  position: absolute;
+  right: 0;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  }
+
 }
