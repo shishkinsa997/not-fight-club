@@ -32,7 +32,7 @@ export function initData() {
     {
       id: "nusha",
       name: "Nusha",
-      avatar: "assets/img/characters/nusha.png",
+      avatar: "assets/img/characters/pork.png",
       hpMax: 95,
       hp: 95,
       damage: 14,
