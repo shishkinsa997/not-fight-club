@@ -273,6 +273,10 @@ export function initData() {
       enemy.hp = enemy.hpMax;
       return enemy;
     },
+    resetCharacter(player) {
+      player.hp = player.hpMax;
+      return player;
+    },
     getPlayerById(id) {
       return players.find((p) => p.id === id);
     },

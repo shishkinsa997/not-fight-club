@@ -148,7 +148,12 @@ export function initGame() {
 
   function startNewFight() {
     const enemy = gameData.getRandomEnemy();
+    const player = gameStore.getState().player;
     gameData.resetEnemy(enemy);
+    gameData.resetCharacter(player);
+    player.hp = player.hpMax;
+    gameStore.updatePlayer(player);
+    
     gameStore.startNewFight(enemy);
   }
 
