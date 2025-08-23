@@ -48,7 +48,8 @@ body::after {
   background-size: 70%;
   background-repeat: no-repeat;
   object-fit: contain;
-  z-index: -1;
+  z-index: 0;
+  cursor: pointer;
 }
 
 button {
