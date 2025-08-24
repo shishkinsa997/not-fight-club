@@ -212,7 +212,7 @@ export function initUI() {
         if (log.blocked) {
           logText += " - blocked!";
         } else if (log.damage > 0) {
-          logText += ` and do ${damage} damage`;
+          logText += ` and deal <span class="dmg">${damage}</span> damage`;
           if (log.crit) {
 
             logText += `${crit}`;

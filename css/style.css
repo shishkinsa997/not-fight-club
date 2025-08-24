@@ -319,6 +319,7 @@ progress::-moz-progress-bar {
 
 .check-box-input {
   border-radius: 2px;
+  cursor: pointer;
 }
 
 /* .btn-attack {
@@ -418,7 +419,6 @@ progress::-moz-progress-bar {
 
 .who, .target {
   font-weight: 600;
-  text-shadow: 0 0 5px var(--btn-primary), 0 0 10px var(--btn-primary);
   }
 
 .zone {
@@ -426,6 +426,12 @@ progress::-moz-progress-bar {
   border: 1px solid var(--text-secondary);
   padding: 4px 4px;
   border-radius: 6px;
+}
+
+.dmg {
+  color: var(--red);
+  text-shadow: 0 0 2px var(--red);
+  font-weight: 600;
 }
 
 .crits svg {
@@ -619,8 +625,7 @@ progress::-moz-progress-bar {
 
 /* TODO: переделать окно статов */
 
-.character-stats,
-.battle-record {
+.character-stats {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -664,7 +669,37 @@ progress::-moz-progress-bar {
 .stat-progress {
   height: 100%;
   background: var(--secondary);
+}
 
+.battle-record {
+  display: flex;
+  gap: 30px;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+}
+
+.battle-record p {
+  margin: 0;
+  padding: 10px 16px;
+  text-align: center;
+  border-radius: 10px;
+  width: 100%;
+  background: #f8f9fa;
+  background: var(--secondary-shadow);
+  box-shadow: 0 0 3px var(--secondary);
+}
+
+#character-wins {
+  color: var(--green);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#character-losses {
+  color: var(--red);
+  font-weight: 600;
+  font-size: 16px;
 }
 
 

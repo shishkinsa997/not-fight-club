@@ -4,6 +4,7 @@
   --btn-primary: #ff62a3e0;
   --secondary: #9462ff;
   --shadow: #ff62a33c;
+  --secondary-shadow: #9462ff3f;
   --hover: #ff4492;
   --save: #10b981;
   --save-hover: #059669;
@@ -51,6 +52,7 @@
   --btn-primary: #ff6262ff;
   --secondary: #9333ea;
   --shadow: #ff62a33c;
+  --secondary-shadow: #9233ea51;
   --hover: #ff3f3fff;
   --save: #10b981;
   --save-hover: #059669;
@@ -76,6 +78,7 @@
   --btn-primary: #9333ea;
   --secondary: #ff6262ff;
   --shadow: #9333ea40;
+  --secondary-shadow: #ff62625c;
   --hover: #6d28d9;
   --save: #10b981;
   --save-hover: #059669;
