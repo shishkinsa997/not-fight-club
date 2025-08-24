@@ -1,0 +1,94 @@
+:root {
+  --border-color: #e4e4e7;
+  --border: 2px solid var(--border-color);
+  --btn-primary: #ff62a3e0;
+  --secondary: #9462ff;
+  --shadow: #ff62a33c;
+  --secondary-shadow: #9462ff3f;
+  --hover: #ff4492;
+  --save: #10b981;
+  --save-hover: #059669;
+  --reset: #e42525;
+  --reset-hover: #b91f1f;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #eeeff0;
+
+  --progress: #b0b0b0;
+
+  --text-primary: #18181b;
+  --text-secondary: #71717a;
+  --text-reverse: #fef2f2;
+
+  --red: #dc2626;
+  --red-shade: #dc262630;
+  --blue: #266cdc;
+  --blue-shade: #266cdc30;
+  --orange: #dcd326;
+  --orange-shade: #dcd32630;
+  --green: #26dc47;
+  --green-shade: #26dc4730;
+
+  --invert: 0;
+
+	--translate-filters-slider: 0;
+	--switch-bg: #f4f4f8;
+	--switch-button: #fff;
+	--switch-button-hover: #000;
+	--button-color: #27262a;
+	--switch-border-color: 0, 0, 0;
+	--switch-button-color: #000;
+}
+
+[data-theme="dark"] {
+	--switch-bg: #24252b;
+	--switch-button: #40424a;
+	--switch-button-hover: #fff;
+	--button-color: #fff;
+	--switch-border-color: 255, 255, 255;
+	--switch-button-color: #fff;
+
+  --border-color: #556075ff;
+  --btn-primary: #ff6262ff;
+  --secondary: #9333ea;
+  --shadow: #ff62a33c;
+  --secondary-shadow: #9233ea51;
+  --hover: #ff3f3fff;
+  --save: #10b981;
+  --save-hover: #059669;
+
+  --bg-primary: rgb(46, 51, 61);
+  --bg-secondary: #3c4658ff;
+
+  --text-primary: #ffffffff;
+  --text-secondary: #d7d7d7ff;
+  --text-reverse: #313131ff;
+
+  --invert: 1;
+}
+[data-theme="black"] {
+	--switch-bg: #3c3c3d;
+	--button-color: #fff;
+	--switch-border-color: 255, 255, 255;
+	--switch-button: #323232;
+	--switch-button-hover: #fff;
+	--switch-button-color: #fff;
+
+  --border-color: #404040ff;
+  --btn-primary: #9333ea;
+  --secondary: #ff6262ff;
+  --shadow: #9333ea40;
+  --secondary-shadow: #ff62625c;
+  --hover: #6d28d9;
+  --save: #10b981;
+  --save-hover: #059669;
+
+  --bg-primary: #222222ff;
+  --bg-secondary: #353535ff;
+
+  --text-primary: #e5e5e5;
+  --text-secondary: #a3a3a3;
+  --text-reverse: #ffffff;
+
+  --invert: 1;
+}
